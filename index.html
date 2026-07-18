@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Me Cumplo · 21 días para volver a confiar en ti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2E2430;
+  --ink-soft:#6B5A63;
+  --wine:#6E2F43;
+  --wine-deep:#521F31;
+  --rose:#C88B85;
+  --rose-soft:#E9CFC8;
+  --bg:#F8F1ED;
+  --surface:#FEFBF9;
+  --line:#E7D8D1;
+  --line-soft:#F0E4DE;
+  --shadow:0 1px 2px rgba(46,36,48,.04), 0 8px 30px rgba(82,31,49,.06);
+  --shadow-lg:0 2px 6px rgba(46,36,48,.05), 0 20px 50px rgba(82,31,49,.10);
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Poppins",-apple-system,system-ui,sans-serif;
+  --hand:"Caveat",cursive;
+  --wrap:600px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.serif{font-family:var(--serif)}
+.hand{font-family:var(--hand)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:40;
+  background:rgba(248,241,237,.82);
+  backdrop-filter:saturate(140%) blur(14px);
+  -webkit-backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid var(--line-soft);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;padding-top:max(14px,env(safe-area-inset-top));
+}
+header.hidden{display:none}
+.brand{font-family:var(--serif);font-weight:500;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine)}
+.brand small{display:block;font-family:var(--sans);font-weight:300;font-size:9px;letter-spacing:.22em;color:var(--ink-soft);text-transform:uppercase;margin-top:1px}
+.menu-btn{background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:4px}
+.menu-btn span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:.25s}
+
+/* ---------- menu overlay ---------- */
+.menu{position:fixed;inset:0;z-index:60;background:var(--bg);opacity:0;visibility:hidden;transition:.28s;overflow-y:auto;padding:26px 24px calc(40px + env(safe-area-inset-bottom))}
+.menu.open{opacity:1;visibility:visible}
+.menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.menu-head .brand{font-size:18px}
+.close-btn{background:none;border:none;font-size:26px;color:var(--ink);cursor:pointer;line-height:1;padding:4px}
+.menu nav{display:flex;flex-direction:column;gap:2px;max-width:var(--wrap);margin:0 auto}
+.menu nav a{font-family:var(--serif);font-size:23px;color:var(--ink);text-decoration:none;padding:11px 0;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:baseline;transition:.15s;cursor:pointer}
+.menu nav a:hover{color:var(--wine);padding-left:8px}
+.menu nav a .idx{font-family:var(--sans);font-size:11px;color:var(--rose);font-weight:400;letter-spacing:.1em}
+
+/* ---------- app / views ---------- */
+#app{max-width:var(--wrap);margin:0 auto;padding:34px 24px calc(80px + env(safe-area-inset-bottom))}
+.view{animation:rise .5s cubic-bezier(.2,.7,.3,1)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:14px}
+h1.title{font-family:var(--serif);font-weight:400;font-size:clamp(30px,8vw,42px);line-height:1.08;letter-spacing:-.01em;margin-bottom:8px}
+h2.section{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.12;margin-bottom:6px}
+.lead{color:var(--ink-soft);font-size:15px;margin-bottom:26px;max-width:46ch}
+.divider{width:38px;height:1px;background:var(--rose);margin:26px 0}
+
+/* letters */
+.letter{font-family:var(--serif);font-weight:300;font-size:18px;line-height:1.72;color:var(--ink)}
+.letter p{margin-bottom:18px}
+.letter .sign{font-family:var(--hand);font-size:30px;color:var(--wine);margin-top:6px;line-height:1}
+.letter .sign small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+
+/* prompt blocks */
+.prompt{margin-bottom:26px}
+.prompt label{display:block;font-family:var(--serif);font-size:19px;line-height:1.35;margin-bottom:10px}
+textarea,input[type=text],input[type=email],input[type=password]{
+  width:100%;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:14px 16px;font-family:var(--sans);font-size:16px;
+  font-weight:300;color:var(--ink);resize:none;line-height:1.6;transition:.18s;
+}
+textarea{min-height:92px}
+textarea:focus,input[type=text]:focus,input[type=email]:focus,input[type=password]:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px rgba(200,139,133,.12);background:#fff}
+textarea::placeholder,input::placeholder{color:#C4B4AE;font-style:italic}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.02em;border:none;border-radius:100px;padding:15px 30px;cursor:pointer;transition:.2s;text-decoration:none}
+.btn-primary{background:var(--wine);color:#fff;box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--wine-deep);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.btn-ghost{background:transparent;color:var(--wine);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--rose);background:var(--surface)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+
+/* ---------- cover ---------- */
+.cover{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 28px calc(48px + env(safe-area-inset-bottom));position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(120% 70% at 50% -10%, rgba(200,139,133,.22), transparent 60%),
+  radial-gradient(90% 60% at 50% 115%, rgba(110,47,67,.10), transparent 60%);
+  pointer-events:none}
+.cover .kicker{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:30px;opacity:0;animation:fade .9s .1s forwards}
+.cover h1{font-family:var(--serif);font-weight:300;font-size:clamp(52px,20vw,96px);line-height:.92;letter-spacing:-.02em;color:var(--wine);opacity:0;animation:fade 1s .35s forwards}
+.cover h1 em{font-style:italic;font-weight:400;display:block}
+.cover .seal-mark{width:64px;height:64px;margin:34px 0;opacity:0;animation:fade 1s .8s forwards}
+.cover .sub{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--ink);max-width:20ch;line-height:1.4;opacity:0;animation:fade 1s 1.05s forwards}
+.cover .enter{margin-top:44px;opacity:0;animation:fade 1s 1.4s forwards}.cover .namebox{margin-top:24px;width:min(320px,82vw);opacity:0;animation:fade 1s 1.55s forwards;display:flex;flex-direction:column;gap:10px}
+.cover .namebox input{text-align:center;font-family:var(--hand);font-size:22px;background:rgba(255,255,255,.5);border:none;border-bottom:1.5px solid var(--rose);border-radius:12px;padding:9px 8px}
+.cover .namebox input:focus{box-shadow:none;border-color:var(--wine);background:#fff}
+.cover .namebox span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px;font-family:var(--sans)}
+.cover-note{margin-top:22px;font-size:12px;color:var(--ink-soft);max-width:26ch;opacity:0;animation:fade 1s 1.7s forwards}
+.countdown{display:flex;gap:16px;margin-top:32px;opacity:0;animation:fade 1s .9s forwards}
+.countdown>div{display:flex;flex-direction:column;align-items:center;min-width:52px}
+.countdown b{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;color:var(--wine)}
+.countdown span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:7px}
+.espera-note{margin-top:30px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);opacity:0;animation:fade 1s 1.2s forwards}
+.espera-preview{background:none;border:none;color:var(--ink-soft);font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:40px;cursor:pointer;opacity:0;animation:fade 1s 1.6s forwards;transition:.15s;border-bottom:1px solid var(--line)}
+.espera-preview:hover{color:var(--wine);border-color:var(--rose)}
+.espera-access{display:flex;gap:8px;align-items:center;margin-top:40px;opacity:0;animation:fade 1s 1.6s forwards}
+.espera-access input{width:160px;text-align:center;background:rgba(255,255,255,.5);border:1px solid var(--line);border-radius:100px;padding:9px 14px;font-family:var(--sans);font-size:16px;color:var(--ink)}
+.espera-access input:focus{outline:none;border-color:var(--rose);background:#fff}
+.espera-access .espera-preview{margin-top:0;padding-bottom:2px}
+@keyframes fade{to{opacity:1}}
+
+/* seal svg base */
+.seal-mark svg,.seal svg{display:block;width:100%;height:100%}
+
+/* ---------- inicio / progress ---------- */
+.progress-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;text-align:center;box-shadow:var(--shadow);margin-bottom:12px}
+.ring-wrap{position:relative;width:150px;height:150px;margin:6px auto 14px}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-num b{font-family:var(--serif);font-size:40px;font-weight:400;color:var(--wine);line-height:1}
+.ring-num span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+.greet{font-family:var(--serif);font-size:26px;margin-bottom:4px}
+.greet .hand{font-size:34px;color:var(--wine)}
+
+/* day grid */
+.grid-days{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:12px;margin-top:8px}
+.day-cell{aspect-ratio:1;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:var(--ink-soft);cursor:pointer;transition:.2s;position:relative}
+.day-cell:hover{border-color:var(--rose);transform:translateY(-2px)}
+.day-cell.done{background:var(--wine);color:#fff;border-color:var(--wine);box-shadow:var(--shadow)}
+.day-cell.today{border:1.5px solid var(--rose);box-shadow:0 0 0 4px rgba(200,139,133,.12)}
+.day-cell.done::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.28),transparent 55%)}
+.day-cell.locked{opacity:.55;cursor:default;background:var(--bg);border-style:dashed}
+.day-cell.locked:hover{transform:none;border-color:var(--line)}
+.day-cell.locked svg{display:block}
+
+.section-links{display:flex;flex-direction:column;gap:0;margin-top:6px}
+.section-links a{display:flex;justify-content:space-between;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line-soft);font-family:var(--serif);font-size:18px;color:var(--ink);cursor:pointer;text-decoration:none;transition:.15s}
+.section-links a:hover{color:var(--wine);padding-left:8px}
+.section-links a .arrow{color:var(--rose);font-family:var(--sans)}
+.pchk{color:var(--wine);font-weight:600;font-family:var(--sans)}
+.cta-day span:first-child{color:var(--wine);font-weight:500}
+
+/* bloque de preparación en inicio */
+.prep-card{background:linear-gradient(180deg,#fff,var(--surface));border:1px solid var(--rose-soft);border-radius:20px;padding:20px 22px;margin-top:16px;box-shadow:var(--shadow)}
+.prep-card.done{border-color:var(--line);background:var(--surface)}
+.prep-head{display:flex;align-items:center;justify-content:space-between}
+.prep-count{font-family:var(--serif);font-size:15px;color:var(--wine)}
+.prep-card .section-links a{font-size:17px;padding:13px 2px}
+.prep-card .section-links a:last-child{border-bottom:none}
+
+/* tarjeta de felicitación al completar */
+.today-card{background:linear-gradient(180deg,#fff,var(--surface));border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:16px;box-shadow:var(--shadow)}
+.today-card.celebrate{text-align:center;border-color:var(--rose-soft);background:linear-gradient(180deg,#fff,#faf0ee)}
+
+/* ---------- day view ---------- */
+.day-head{text-align:center;margin-bottom:8px}
+.day-head .dnum{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);font-weight:500}
+.day-head .dname{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.1;margin-top:6px}
+.quote{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.42;text-align:center;color:var(--wine);margin:24px auto;max-width:26ch;position:relative}
+.quote::before{content:"“";position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:44px;color:var(--rose-soft);font-family:var(--serif)}
+.mission{background:linear-gradient(180deg,#fff,var(--surface));border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:28px}
+.mission .lbl{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:8px}
+.mission p{font-family:var(--serif);font-size:18px;line-height:1.5}
+
+/* habit checks */
+.habits{margin-bottom:28px}
+.habit{display:flex;align-items:center;gap:14px;padding:13px 4px;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.habit:last-child{border-bottom:none}
+.check{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.2s;background:var(--surface)}
+.habit.on .check{background:var(--wine);border-color:var(--wine)}
+.check svg{width:14px;height:14px;opacity:0;transform:scale(.5);transition:.2s}
+.habit.on .check svg{opacity:1;transform:scale(1)}
+.habit .htxt{font-size:15px;color:var(--ink);font-weight:300}
+.habit.seal{margin-top:6px;padding:15px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;border-bottom:1px solid var(--line)}
+.habit.seal .htxt{font-family:var(--serif);font-size:17px}
+.habit.seal.on{background:linear-gradient(180deg,#fff,#faf0ee);border-color:var(--rose-soft)}
+@keyframes press{0%{transform:scale(1)}40%{transform:scale(.86)}100%{transform:scale(1)}}
+.check.pressed{animation:press .35s}
+
+/* scale 1-10 */
+.scale{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.scale button{flex:1;min-width:26px;aspect-ratio:1;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-family:var(--sans);font-size:14px;color:var(--ink-soft);cursor:pointer;transition:.15s}
+.scale button:hover{border-color:var(--rose)}
+.scale button.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.scale-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-top:8px;letter-spacing:.04em}
+
+.grat{background:var(--surface);border:1px dashed var(--rose);border-radius:18px;padding:20px}
+.grat .lbl{font-family:var(--hand);font-size:22px;color:var(--wine);margin-bottom:8px}
+
+/* pager */
+.pager{display:flex;justify-content:space-between;align-items:center;margin-top:34px;gap:12px}
+.pager button{background:none;border:1px solid var(--line);border-radius:100px;padding:12px 18px;font-family:var(--sans);font-size:13px;color:var(--ink);cursor:pointer;transition:.15s}
+.pager button:hover:not(:disabled){border-color:var(--rose);color:var(--wine)}
+.pager button:disabled{opacity:.3;cursor:default}
+
+/* commitment */
+.commit-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px 24px;box-shadow:var(--shadow-lg);text-align:center}
+.commit-card .seal{width:52px;height:52px;margin:0 auto 16px}
+.commit-card textarea{text-align:center;font-family:var(--serif);font-size:18px;min-height:120px;border-style:dashed}
+.firma-line{margin-top:22px;border-top:1px solid var(--line);padding-top:14px}
+.firma-line input{text-align:center;font-family:var(--hand);font-size:26px;border:none;border-bottom:1.5px solid var(--rose);border-radius:0;background:transparent;max-width:260px;margin:0 auto}
+.firma-line .fl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px}
+.fecha{font-size:12px;color:var(--ink-soft);margin-top:14px;letter-spacing:.06em}
+
+/* tracker table */
+.tracker-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -24px;padding:0 24px}
+table.tracker{border-collapse:collapse;width:100%;min-width:520px;font-size:13px}
+table.tracker th,table.tracker td{text-align:center;padding:0}
+table.tracker thead th{font-family:var(--sans);font-weight:400;font-size:10px;letter-spacing:.04em;color:var(--ink-soft);padding:8px 2px;vertical-align:bottom;line-height:1.2}
+table.tracker thead th.dcol{writing-mode:horizontal-tb}
+table.tracker tbody th{font-family:var(--serif);font-weight:400;font-size:13px;text-align:left;color:var(--wine);padding:6px 10px 6px 0;white-space:nowrap}
+table.tracker td{border:1px solid var(--line-soft)}
+.tcell{width:26px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.tcell i{width:12px;height:12px;border-radius:3px;border:1px solid var(--line);display:block;transition:.15s}
+.tcell.on i{background:var(--wine);border-color:var(--wine)}
+table.tracker td.dayhdr{background:var(--line-soft)}
+
+/* wallpapers */
+.walls{display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -24px;padding:4px 24px 20px;scroll-snap-type:x mandatory}
+.wall{flex:none;width:min(230px,66vw);aspect-ratio:9/19.5;border-radius:26px;scroll-snap-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:34px 24px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.wall .wtxt{font-family:var(--serif);font-size:24px;line-height:1.3;font-weight:400}
+.wall .wtag{position:absolute;bottom:26px;left:0;right:0;font-size:9px;letter-spacing:.28em;text-transform:uppercase;opacity:.75}
+.wall.w1{background:linear-gradient(160deg,#6E2F43,#3A1826)}
+.wall.w2{background:linear-gradient(160deg,#C88B85,#8A4A54)}
+.wall.w3{background:linear-gradient(160deg,#2E2430,#5A3547)}
+.wall.w4{background:linear-gradient(160deg,#521F31,#864152)}
+.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.wthumb{aspect-ratio:9/16;border-radius:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:22px 16px;color:#fff;cursor:pointer;position:relative;box-shadow:var(--shadow);transition:.2s;overflow:hidden}
+.wthumb:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.wthumb .wtxt{font-family:var(--serif);font-size:18px;line-height:1.25}
+.wthumb .wig{position:absolute;bottom:14px;left:0;right:0;font-size:10px;letter-spacing:.22em;opacity:.85}
+.wfull{max-width:300px;margin:0 auto;aspect-ratio:9/19.5;max-height:74vh;border-radius:30px;display:flex;flex-direction:column;text-align:center;padding:38px 26px 30px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.wfull .wtxt{font-family:var(--serif);line-height:1.32;flex:none}
+.wfull .wframe{flex:1;margin:24px 0;border-radius:16px;border:2px solid rgba(255,255,255,.55);overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.10);min-height:0}
+.wfull .wframe img{width:100%;height:100%;object-fit:cover;display:block}
+.wframe-ph{color:rgba(255,255,255,.65);font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:lowercase}
+.wcredit{flex:none;display:flex;flex-direction:column;gap:2px}
+.wctag{font-family:var(--serif);font-size:16px;letter-spacing:.02em}
+.wcby{font-family:var(--sans);font-size:11px;letter-spacing:.2em;opacity:.85}
+.wupload{cursor:pointer}
+.hint{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:2px;font-style:italic}
+/* ===== diploma / certificado (formato historia) ===== */
+.cert-wrap{--gold:#E7C48C;--gold-deep:#C79A52;--ivory:#F6ECD9}
+.cert{position:relative;overflow:hidden;border-radius:26px;padding:52px 30px 44px;text-align:center;color:var(--ivory);
+  background:
+    radial-gradient(120% 55% at 50% -8%, rgba(231,196,140,.20), transparent 60%),
+    radial-gradient(80% 50% at 50% 108%, rgba(200,139,133,.18), transparent 60%),
+    linear-gradient(165deg,#5A2438 0%,#3B1728 48%,#2A1220 100%);
+  box-shadow:0 30px 70px rgba(42,18,32,.45);}
+.cert::before{content:"";position:absolute;inset:14px;border:1px solid rgba(231,196,140,.45);border-radius:16px;pointer-events:none}
+.cert::after{content:"";position:absolute;inset:19px;border:1px solid rgba(231,196,140,.18);border-radius:12px;pointer-events:none}
+.cert-orn{width:100%;max-width:180px;margin:0 auto 8px;display:block}
+.cert-k{font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:20px}
+.cert-medal{width:78px;height:78px;margin:4px auto 18px}
+.cert-pre{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(246,236,217,.75);margin-bottom:6px;letter-spacing:.02em}
+.cert-name{font-family:var(--serif);font-weight:400;font-size:clamp(30px,8.5vw,42px);line-height:1.05;color:var(--ivory);margin:4px 0 2px;letter-spacing:.01em}
+.cert-name.locked{font-family:var(--serif);font-style:italic;font-size:17px;color:rgba(246,236,217,.6);line-height:1.5;max-width:22ch;margin:14px auto;font-weight:300}
+.cert-flourish{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0}
+.cert-flourish i{height:1px;width:44px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cert-flourish b{color:var(--gold);font-size:12px}
+.cert-phrase{font-family:var(--serif);font-size:23px;line-height:1.28;color:var(--gold);margin:6px auto 4px;max-width:18ch;font-weight:400}
+.cert-sub{font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(246,236,217,.82);max-width:24ch;margin:8px auto 0;line-height:1.5}
+.cert-meta{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,236,217,.6);margin:22px 0 14px}
+.cert-sellos{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;max-width:250px;margin:0 auto 20px}
+.cert-sellos i{width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F3D9A6,var(--gold-deep));box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.cert-sellos i.off{background:transparent;border:1px solid rgba(231,196,140,.35);box-shadow:none}
+.cert-sign{font-family:var(--hand);font-size:26px;color:var(--gold);line-height:1;margin-top:6px}
+.cert-ig{font-family:var(--sans);font-size:11px;letter-spacing:.14em;color:rgba(246,236,217,.65);margin-top:6px}
+.cert-lockbadge{position:absolute;top:26px;right:26px;width:34px;height:34px;border-radius:50%;background:rgba(42,18,32,.55);border:1px solid rgba(231,196,140,.4);display:flex;align-items:center;justify-content:center}
+.cert-share{text-align:center;font-family:var(--serif);font-style:italic;color:var(--wine);font-size:15px;margin:20px auto 4px;max-width:30ch}
+.cierre-lock{text-align:center;padding:30px 0}
+.cierre-count{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);margin-top:22px;font-weight:500}
+.futuro-echo{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--rose);border-radius:0 16px 16px 0;padding:20px 22px;font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink)}
+.futuro-echo p{margin-bottom:12px}
+.futuro-echo p:last-child{margin-bottom:0}
+.futuro-echo em{color:var(--rose);font-style:italic}
+
+/* small note */
+.note{background:var(--surface);border-left:2px solid var(--rose);border-radius:0 12px 12px 0;padding:14px 18px;font-size:14px;color:var(--ink-soft);margin:24px 0;font-style:italic;line-height:1.55}
+.saved-tag{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--wine);color:#fff;font-size:12px;letter-spacing:.08em;padding:9px 20px;border-radius:100px;opacity:0;transition:.3s;z-index:50;pointer-events:none;box-shadow:var(--shadow-lg)}
+.saved-tag.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.center{text-align:center}
+.mt{margin-top:26px}
+
+/* firma instagram + pie */
+.ig-link{color:var(--wine);text-decoration:none;border-bottom:1px solid var(--rose-soft);transition:.15s}
+.ig-link:hover{color:var(--wine-deep);border-color:var(--wine)}
+#ftr{max-width:var(--wrap);margin:0 auto;padding:26px 24px calc(30px + env(safe-area-inset-bottom));text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center;border-top:1px solid var(--line-soft);margin-top:10px}
+#ftr.hidden{display:none}
+#ftr span{font-family:var(--serif);font-size:14px;color:var(--ink-soft);font-style:italic}
+#ftr .heart{color:var(--wine);font-style:normal}
+#ftr .ig-link{font-family:var(--sans);font-size:13px;letter-spacing:.02em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:8px 8px 8px 15px;font-size:14px;color:var(--ink)}
+.chip button{background:var(--rose-soft);border:none;width:20px;height:20px;border-radius:50%;color:var(--wine);font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+.chip button:hover{background:var(--rose);color:#fff}
+.add-row{display:flex;gap:10px;align-items:stretch}
+.add-row input{flex:1}
+.add-row .btn{padding:0 22px;white-space:nowrap}
+.deseo-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.deseo{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.deseo .dcheck{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff;transition:.2s}
+.deseo.done .dcheck{background:var(--wine);border-color:var(--wine)}
+.deseo .dcheck svg{width:14px;height:14px;opacity:0;transform:scale(.5);transition:.2s}
+.deseo.done .dcheck svg{opacity:1;transform:scale(1)}
+.deseo .dtxt{flex:1;font-size:15px;color:var(--ink);line-height:1.4}
+.deseo.done .dtxt{color:var(--ink-soft);text-decoration:line-through}
+.deseo .ddel{flex:none;background:none;border:none;color:#C4B4AE;font-size:20px;cursor:pointer;line-height:1;padding:2px 4px;transition:.15s}
+.deseo .ddel:hover{color:var(--wine)}
+
+/* panel admin */
+.alumna{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:10px;cursor:pointer;transition:.15s}
+.alumna:hover{border-color:var(--rose);transform:translateY(-1px);box-shadow:var(--shadow)}
+.al-name{font-family:var(--serif);font-size:18px;color:var(--ink)}
+.al-mail{font-size:12px;color:var(--ink-soft)}
+.al-prog{flex:none;text-align:right;font-family:var(--serif);color:var(--wine)}
+.al-prog b{font-size:24px}.al-prog span{font-size:13px;color:var(--ink-soft)}
+.ad-head{margin-bottom:18px}
+.ad-day{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.ad-dh{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ad-dh b{font-family:var(--serif);font-size:17px;color:var(--wine)}
+.ad-seal{font-size:11px;background:var(--rose-soft);color:var(--wine);padding:2px 10px;border-radius:100px;letter-spacing:.04em}
+.ad-no{font-size:11px;color:var(--ink-soft)}
+.ad-sc{font-size:11px;color:var(--ink-soft);margin-left:auto}
+.ad-day p{font-size:14px;line-height:1.5;margin-bottom:5px;color:var(--ink)}
+.ad-day p em{color:var(--rose);font-style:italic}
+.ad-hab{font-size:12px;color:var(--ink-soft)}
+
+@media print{
+  header,.menu,.pager,.saved-tag,.btn,.no-print,#ftr{display:none!important}
+  body{background:#fff}
+  #app{padding:0}
+  .cert{box-shadow:none;page-break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr" class="hidden">
+  <div class="brand">Me Cumplo<small>21 días</small></div>
+  <button class="menu-btn" id="menuOpen" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu">
+  <div class="menu-head">
+    <div class="brand">Me Cumplo<small>21 días para volver a confiar en ti</small></div>
+    <button class="close-btn" id="menuClose" aria-label="Cerrar">×</button>
+  </div>
+  <nav id="menuNav"></nav>
+</div>
+
+<main id="app"></main>
+<footer id="ftr" class="hidden">
+  <span>Creado con <span class="heart">❤</span> por Meiby González</span>
+  <a href="https://instagram.com/meibyg" target="_blank" rel="noopener" class="ig-link">@meibyg</a>
+</footer>
+<div class="saved-tag" id="savedTag">Guardado ✓</div>
+
+<script>
+/* ============================================================
+   ME CUMPLO · almacenamiento (funciona en la vista previa de
+   Claude con window.storage y, al publicarla en tu web/GitHub,
+   usa el almacenamiento del navegador automáticamente).
+   ============================================================ */
+const KEY="mecumplo_v1";
+const Store={
+  async get(k){
+    try{ if(window.storage){ const r=await window.storage.get(k,false); return r?r.value:null; } }catch(e){}
+    try{ return window.localStorage.getItem(k); }catch(e){ return null; }
+  },
+  async set(k,v){
+    try{ if(window.storage){ await window.storage.set(k,v,false); return; } }catch(e){}
+    try{ window.localStorage.setItem(k,v); }catch(e){}
+  }
+};
+
+/* ============================================================
+   CONEXIÓN A SUPABASE  (panel privado para Meiby)
+   → Pega aquí tu Project URL y tu anon public key.
+     Si los dejas vacíos, la app funciona sola en modo local.
+   ============================================================ */
+const SUPABASE_URL  = "https://kkowbtifxpaclsafhxou.supabase.co"; // ej: https://xxxxxxxx.supabase.co
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtrb3didGlmeHBhY2xzYWZoeG91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzMzkyMTEsImV4cCI6MjA5OTkxNTIxMX0.mXle520k72unhownMPF1aLRzAgC9BbWY2hdgE6azyic"; // ej: eyJhbGciOi... (clave "anon public")
+const cloudMode = !!(SUPABASE_URL && SUPABASE_ANON);
+
+/* ============================================================
+   FECHA DE INICIO DEL RETO
+   Antes de esta fecha se ve la cuenta regresiva; ese día se abre solo.
+   Formato: año, mes-1, día  (el mes va de 0 a 11, por eso julio = 6)
+   Para QUITAR la cuenta regresiva, pon:  const LAUNCH = null;
+   ============================================================ */
+const LAUNCH = new Date(2026, 6, 27, 0, 0, 0); // 27 de julio de 2026
+const PREVIEW_KEY = "Santi1903"; // clave para que solo tú puedas ver la app antes del lanzamiento
+
+async function rpc(fn, body){
+  const res = await fetch(SUPABASE_URL+"/rest/v1/rpc/"+fn, {
+    method:"POST",
+    headers:{ "apikey":SUPABASE_ANON, "Authorization":"Bearer "+SUPABASE_ANON, "Content-Type":"application/json" },
+    body: JSON.stringify(body)
+  });
+  if(!res.ok){ throw new Error("RPC "+fn+" → "+res.status); }
+  const txt = await res.text();
+  return txt ? JSON.parse(txt) : null;
+}
+async function cloudSave(){
+  const em = DATA.profile && DATA.profile.email;
+  if(!cloudMode || !em) return;
+  try{ await rpc("save_progress",{ p_email:em, p_nombre:DATA.profile.name||"", p_apellido:DATA.profile.apellido||"", p_data:DATA }); }
+  catch(e){ console.warn("cloudSave", e); }
+}
+async function cloudLoad(email){
+  if(!cloudMode) return null;
+  try{ return await rpc("load_progress",{ p_email:email }); }catch(e){ console.warn("cloudLoad", e); return null; }
+}
+async function adminAll(secret){ return await rpc("admin_all",{ p_secret:secret }); }
+
+/* Alumnas de ejemplo (solo para la vista de demostración del panel) */
+const DEMO_ROWS=[
+ {nombre:"Valentina",apellido:"Ríos",email:"valentina@correo.com",updated_at:null,data:{
+   profile:{name:"Valentina",apellido:"Ríos",email:"valentina@correo.com"},
+   compromiso:{promesa:"Me prometo tomarme en serio, aunque nadie más lo note."},
+   habits:{1:{mecumpli:true,agua:true,camine:true,lectura:true},2:{mecumpli:true,agua:true,ejercicio:true},3:{mecumpli:true,agua:true,dormi:true},4:{mecumpli:true,camine:true,mision:true}},
+   days:{1:{senti:"Nerviosa, pero decidida.",dificil:"Empezar sin excusas.",aprendi:"Que sí puedo dar el primer paso.",gratitud:"Mi salud.",escala:8},
+         2:{senti:"Con más energía que ayer.",aprendi:"Mi porqué me mueve.",gratitud:"Mi familia.",escala:7},
+         4:{senti:"Orgullosa de mí.",dificil:"No rendirme al cansancio.",gratitud:"Este reto.",escala:9}},
+   deseos:[{t:"Aprender a nadar",done:false},{t:"Correr un 5k",done:true}],
+   customHabits:[{id:"c1",label:"Medité"}]
+ }},
+ {nombre:"Camila",apellido:"Torres",email:"camila@correo.com",updated_at:null,data:{
+   profile:{name:"Camila",apellido:"Torres",email:"camila@correo.com"},
+   compromiso:{promesa:"Voy a volver a confiar en mí."},
+   habits:{1:{mecumpli:true,agua:true},2:{mecumpli:true,agua:true,lectura:true}},
+   days:{1:{senti:"Insegura, pero aquí estoy.",gratitud:"Un nuevo comienzo.",escala:6},
+         2:{senti:"Un poquito mejor.",aprendi:"Que empezar de nuevo está bien.",escala:7}},
+   deseos:[{t:"Viajar sola alguna vez",done:false}]
+ }},
+ {nombre:"Sofía",apellido:"Méndez",email:"sofia@correo.com",updated_at:null,data:(function(){
+   const h={},dd={};for(let i=1;i<=21;i++){h[i]={mecumpli:true,agua:true,camine:true};}
+   dd[1]={senti:"El primer paso fue el más difícil.",aprendi:"Que sí soy capaz.",gratitud:"Haberme atrevido.",escala:8};
+   dd[21]={senti:"No lo puedo creer. Lo logré.",aprendi:"Que cuando me doy mi palabra, me la cumplo.",gratitud:"La mujer en la que me convertí.",escala:10};
+   return {profile:{name:"Sofía",apellido:"Méndez",email:"sofia@correo.com"},compromiso:{promesa:"Me prometo no abandonarme más."},habits:h,days:dd,deseos:[{t:"Poner mi propio negocio",done:true},{t:"Aprender inglés",done:false}]};
+ })()}
+];
+
+/* ---------- contenido de los 21 días ---------- */
+const WEEKS={1:"Semana 1 · Reconectar contigo",2:"Semana 2 · Construir disciplina",3:"Semana 3 · Volver a confiar en ti"};
+const DAYS=[
+ {n:1,w:1,name:"El primer paso",frase:"No tienes que hacerlo perfecto. Solo tienes que empezar.",mision:"Escribe en una sola frase por qué HOY decidiste empezar. Léela en voz alta antes de dormir."},
+ {n:2,w:1,name:"Tu porqué",frase:"Cuando el porqué es fuerte, el cómo aparece.",mision:"Escribe tu porqué en un papel y ponlo donde lo veas cada mañana."},
+ {n:3,w:1,name:"Soltar la perfección",frase:"Hecho es mejor que perfecto.",mision:"Haz algo hoy al 80% y termínalo. No lo dejes esperando a que quede perfecto."},
+ {n:4,w:1,name:"Palabra cumplida",frase:"Cada promesa que te cumples te devuelve un poco de confianza.",mision:"Hazte una promesa pequeñita hoy. Cúmplela sin buscar excusas."},
+ {n:5,w:1,name:"Tu entorno",frase:"Tu ambiente habla más fuerte que tu fuerza de voluntad.",mision:"Prepara u ordena un espacio que te acerque a tu hábito. Déjalo listo para mañana."},
+ {n:6,w:1,name:"Descansar también es avanzar",frase:"El descanso no es rendirte. Es recargarte.",mision:"Duerme temprano hoy. Regálate una noche de descanso de verdad."},
+ {n:7,w:1,name:"Mírate con orgullo",frase:"Una semana. Ya no eres quien empezó.",mision:"Vuelve a leer lo que escribiste el día 1. Reconócete lo que llevas."},
+ {n:8,w:2,name:"Disciplina sobre motivación",frase:"La motivación te trae. La disciplina te sostiene.",mision:"Cumple tu hábito hoy aunque no tengas ganas. Sobre todo si no tienes ganas."},
+ {n:9,w:2,name:"Los días difíciles",frase:"Los días difíciles construyen a las personas fuertes.",mision:"Identifica tu excusa favorita del día… y hazlo de todos modos."},
+ {n:10,w:2,name:"Constancia, no intensidad",frase:"Poquito todos los días le gana a mucho un solo día.",mision:"Haz lo mínimo, pero hazlo. Hoy no falles, aunque sea en pequeño."},
+ {n:11,w:2,name:"Háblate bonito",frase:"Trátate como tratarías a alguien que amas.",mision:"Cada vez que te critiques hoy, cámbialo por una palabra amable hacia ti."},
+ {n:12,w:2,name:"Cara a cara con la excusa",frase:"La excusa desaparece cuando la miras de frente.",mision:"Escribe la excusa que más te repites. Debajo, escribe por qué ya no es cierta."},
+ {n:13,w:2,name:"Celebra lo pequeño",frase:"Lo pequeño también cuenta. Siempre contó.",mision:"Celebra en voz alta un logro chiquito de hoy. Aunque parezca tonto."},
+ {n:14,w:2,name:"Vas a mitad de camino",frase:"Dos semanas cumpliéndote. Esto ya eres tú.",mision:"Mira todos los sellos que llevas. Deja que eso te lo diga: sí puedes."},
+ {n:15,w:3,name:"Ya no eres la misma persona",frase:"Mira atrás. Mira cuánto has cambiado.",mision:"Escribe una diferencia real entre la persona del día 1 y la de hoy."},
+ {n:16,w:3,name:"Soy alguien que se cumple",frase:"No es lo que haces. Es en quién te conviertes.",mision:"Di en voz alta, mirándote: “Soy alguien que se cumple.” Repítelo hasta creerlo."},
+ {n:17,w:3,name:"Cuando nadie te ve",frase:"Quien eres cuando nadie mira, eso eres de verdad.",mision:"Cumple tu hábito hoy sin contárselo a nadie. Solo para ti."},
+ {n:18,w:3,name:"Perdónate las caídas",frase:"Caer no borra tu progreso. Rendirte, sí.",mision:"Si fallaste algún día, perdónate hoy y vuelve. Hoy cuentas de nuevo."},
+ {n:19,w:3,name:"Tu nueva normalidad",frase:"Lo que antes te costaba, hoy ya es parte de ti.",mision:"Nota algo que antes te costaba y hoy haces casi sin pensarlo. Nómbralo."},
+ {n:20,w:3,name:"Esto no termina mañana",frase:"No es una meta. Es tu nueva forma de vivir.",mision:"Elige el hábito que quieres conservar para siempre. Escríbelo con nombre."},
+ {n:21,w:3,name:"Me cumplí",frase:"Lo lograste. Volviste a confiar en ti.",mision:"Escríbele una carta a tu yo del futuro en la sección “Carta al futuro”."}
+];
+const DEFAULT_HABITS=[
+ {id:"agua",t:"Tomé agua"},
+ {id:"camine",t:"Caminé"},
+ {id:"ejercicio",t:"Hice ejercicio"},
+ {id:"lectura",t:"Leí"},
+ {id:"comi",t:"Comí saludable"},
+ {id:"dormi",t:"Dormí bien"},
+ {id:"tiempo",t:"Tiempo para mí"},
+ {id:"mision",t:"Cumplí mi misión del día"},
+];
+function defaultHabitList(){return DEFAULT_HABITS.map(h=>({id:h.id,label:h.t}));}
+function ensureHabitList(){if(!Array.isArray(DATA.habitList)){DATA.habitList=defaultHabitList().concat((DATA.customHabits||[]).map(h=>({id:h.id,label:h.label})));}return DATA.habitList;}
+function activeHabits(){return ensureHabitList().map(h=>({id:h.id,t:h.label}));}
+function habitEditorHTML(){
+ const list=ensureHabitList();
+ const chips=list.map(h=>`<span class="chip">${esc(h.label)}<button data-delhabit="${h.id}" aria-label="Quitar">×</button></span>`).join("");
+ return `<div class="chips">${chips||'<span class="hint" style="font-style:normal">No tienes hábitos. Agrega el primero.</span>'}</div>
+   <div class="add-row">
+     <input type="text" id="newHabit" placeholder="Ej: Corrí, Medité, Escribí…" maxlength="28">
+     <button class="btn btn-primary" data-addhabit>Agregar</button>
+   </div>`;
+}
+function trackerTableHTML(){
+ let head='<th></th>';
+ for(let i=1;i<=21;i++)head+=`<th class="dcol">${i}</th>`;
+ let rows="";
+ const allRows=[...activeHabits(),{id:"mecumpli",t:"Me cumplí"}];
+ allRows.forEach(h=>{
+  let tds="";
+  for(let i=1;i<=21;i++){
+    const on=get("habits."+i+"."+h.id);
+    tds+=`<td><div class="tcell ${on?'on':''}" data-habit="${i}.${h.id}"><i></i></div></td>`;
+  }
+  rows+=`<tr><th>${h.t}</th>${tds}</tr>`;
+ });
+ return `<div class="tracker-scroll"><table class="tracker"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+/* ---------- estado ---------- */
+let DATA={};
+function fresh(){return{profile:{name:""},antes:{},compromiso:{},partida:{},days:{},habits:{},weekly:{},futuro:{},habitList:defaultHabitList(),customHabits:[],deseos:[],deseoReflex:{},seen:{},onboarded:false,started:false};}
+function get(path){let o=DATA;for(const p of path.split("."))o=(o&&o[p]!=null)?o[p]:undefined;return o;}
+function set(path,val){const ps=path.split(".");let o=DATA;for(let i=0;i<ps.length-1;i++){if(o[ps[i]]==null)o[ps[i]]={};o=o[ps[i]];}o[ps[ps.length-1]]=val;scheduleSave();}
+let saveT;
+function scheduleSave(){clearTimeout(saveT);saveT=setTimeout(doSave,600);}
+async function doSave(){await Store.set(KEY,JSON.stringify(DATA));cloudSave();const t=document.getElementById("savedTag");t.textContent="Guardado ✓";t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1100);}
+function doneCount(){let c=0;for(let i=1;i<=21;i++)if(get("habits."+i+".mecumpli"))c++;return c;}
+function hasAny(obj,exclude){exclude=exclude||[];if(!obj||typeof obj!=="object")return false;return Object.keys(obj).some(k=>{if(exclude.indexOf(k)>=0)return false;const v=obj[k];return typeof v==="string"?v.trim()!=="":!!v;});}
+
+/* ---------- svg helpers ---------- */
+const checkSVG='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+function sealSVG(c1="#6E2F43",c2="#C88B85"){return `<svg viewBox="0 0 64 64" aria-hidden="true"><defs><radialGradient id="sg" cx="35%" cy="30%"><stop offset="0%" stop-color="${c2}"/><stop offset="100%" stop-color="${c1}"/></radialGradient></defs><circle cx="32" cy="32" r="26" fill="url(#sg)"/><circle cx="32" cy="32" r="20" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"/><path d="M24 33l6 6 12-13" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+
+/* ============================================================
+   VISTAS
+   ============================================================ */
+const app=document.getElementById("app");
+let current="cover";
+let ADMIN={auth:false,secret:"",rows:[],sel:null,err:"",q:""};
+let fondoSel=null, fondoPhoto=null;
+let bypassLaunch=false, cdTimer=null;
+function preLaunch(){return !bypassLaunch && LAUNCH && Date.now()<LAUNCH.getTime();}
+function fmtCountdown(){let d=LAUNCH?LAUNCH.getTime()-Date.now():0;if(d<0)d=0;return{days:Math.floor(d/86400000),hrs:Math.floor(d%86400000/3600000),mins:Math.floor(d%3600000/60000),secs:Math.floor(d%60000/1000)};}
+function stopCountdown(){if(cdTimer){clearInterval(cdTimer);cdTimer=null;}}
+function startCountdown(){
+  stopCountdown();
+  const upd=()=>{
+    const el=document.getElementById("cd");if(!el){stopCountdown();return;}
+    const c=fmtCountdown();
+    el.querySelector('[data-cd="d"]').textContent=c.days;
+    el.querySelector('[data-cd="h"]').textContent=String(c.hrs).padStart(2,'0');
+    el.querySelector('[data-cd="m"]').textContent=String(c.mins).padStart(2,'0');
+    el.querySelector('[data-cd="s"]').textContent=String(c.secs).padStart(2,'0');
+    if(!LAUNCH||LAUNCH.getTime()-Date.now()<=0){stopCountdown();bypassLaunch=true;go("cover");}
+  };
+  upd();cdTimer=setInterval(upd,1000);
+}
+const FONDO_BG=[
+ "linear-gradient(160deg,#6E2F43,#3A1826)",
+ "linear-gradient(160deg,#C88B85,#8A4A54)",
+ "linear-gradient(160deg,#2E2430,#5A3547)",
+ "linear-gradient(160deg,#521F31,#864152)",
+ "linear-gradient(160deg,#3A1826,#6E2F43)",
+ "linear-gradient(160deg,#4A2F42,#241019)",
+ "linear-gradient(160deg,#864152,#521F31)",
+ "linear-gradient(160deg,#8A4A54,#C88B85)",
+];
+const FONDO_TEXTS=[
+ "Antes decía 'mañana empiezo'. Hoy me demuestro que sí puedo.",
+ "La disciplina no es hacerlo cuando te sientes bien; es hacerlo incluso cuando tu mente te dice 'mañana mejor'.",
+ "No siempre vas a tener ganas. Pero imagina todo lo que podrías cambiar si dejaras de esperar a sentirte lista.",
+ "Hay algo adictivo en verte convertir en la persona que prometiste ser.",
+ "La disciplina me está llevando a lugares donde la motivación nunca pudo.",
+ "Un día vas a agradecerte no haberte rendido en los días que más te costó seguir.",
+ "Tu historia cambia cuando dejas de esperar que pase y empiezas a hacer que pase.",
+ "Estoy orgullosa de mí por todas las veces que seguí adelante sin que nadie viera lo que me costó.",
+ "No necesitas demostrarle nada al mundo. Solo cumplir la promesa que te hiciste a ti.",
+ "No subestimes el poder de cumplirte, incluso en los días más difíciles.",
+ "Hay una versión de ti que está esperando conocerte.",
+ "A veces el mayor acto de amor propio es hacer lo que dijiste que harías, aunque nadie te esté viendo.",
+ "Algún día dejarás de preguntarte '¿y si no puedo?' y empezarás a preguntarte '¿por qué esperé tanto para empezar?'.",
+ "Hoy me cumplo.",
+ "Un día a la vez.",
+ "Hecho es mejor que perfecto.",
+ "Vuelve a confiar en ti.",
+ "Me di mi palabra.",
+ "Soy alguien que se cumple.",
+ "Empieza. Aunque tiemble.",
+ "No renuncio a mí.",
+ "Poquito, pero todos los días.",
+];
+const FONDOS=FONDO_TEXTS.map((t,i)=>({t,g:FONDO_BG[i%FONDO_BG.length]}));
+function fondoSize(t,full){const n=t.length;if(full)return n<=22?34:n<=48?26:n<=90?21:18;return n<=22?20:n<=48?16:n<=90?14:12.5;}
+
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");}
+function fld(path,ph,tag="textarea"){
+ const v=esc(get(path)||"");
+ if(tag==="input")return `<input type="text" data-p="${path}" placeholder="${ph}" value="${v}">`;
+ return `<textarea data-p="${path}" placeholder="${ph}">${v}</textarea>`;
+}
+function prompt(q,path,ph=""){return `<div class="prompt"><label>${q}</label>${fld(path,ph)}</div>`;}
+
+const VIEWS={
+ reiniciar(){
+  return `<section class="view">
+   <div class="eyebrow">Empezar de nuevo</div>
+   <h1 class="title">¿Borrar todo<br>y empezar otra vez?</h1>
+   <p class="lead">Se borra tu progreso, tus respuestas, tus sellos y tus hábitos en este dispositivo. Esto no se puede deshacer.</p>
+   <div class="btn-row mt"><button class="btn btn-primary" data-resetgo>Sí, empezar de nuevo</button><button class="btn btn-ghost" data-go="inicio">Cancelar</button></div>
+  </section>`;
+ },
+ espera(){
+  const c=fmtCountdown();
+  const fecha=LAUNCH?LAUNCH.toLocaleDateString("es-ES",{day:"numeric",month:"long"}):"";
+  return `<section class="cover view">
+    <div class="kicker">Muy pronto</div>
+    <h1>Me<em>Cumplo</em></h1>
+    <div class="seal-mark">${sealSVG()}</div>
+    <p class="sub">Iniciamos el ${fecha}.</p>
+    <div id="cd" class="countdown">
+      <div><b data-cd="d">${c.days}</b><span>días</span></div>
+      <div><b data-cd="h">${String(c.hrs).padStart(2,'0')}</b><span>horas</span></div>
+      <div><b data-cd="m">${String(c.mins).padStart(2,'0')}</b><span>min</span></div>
+      <div><b data-cd="s">${String(c.secs).padStart(2,'0')}</b><span>seg</span></div>
+    </div>
+    <p class="espera-note">Prepárate para volver a confiar en ti. 🤍</p>
+    <div class="espera-access">
+      <input type="password" id="previewKey" placeholder="clave (solo Meiby)" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <button class="espera-preview" data-previewgo>entrar</button>
+    </div>
+  </section>`;
+ },
+ cover(){
+  document.getElementById("hdr").classList.add("hidden");
+  return `<section class="cover view">
+    <div class="kicker">Un reto de 21 días</div>
+    <h1>Me<em>Cumplo</em></h1>
+    <div class="seal-mark">${sealSVG()}</div>
+    <p class="sub">21 días para volver a confiar en ti.</p>
+    <div class="namebox">
+      <span>Empecemos por conocerte</span>
+      <input id="inNombre" type="text" placeholder="tu nombre" value="${esc(get('profile.name')||'')}" autocomplete="given-name">
+      <input id="inApellido" type="text" placeholder="tu apellido" value="${esc(get('profile.apellido')||'')}" autocomplete="family-name">
+      <input id="inEmail" type="email" placeholder="tu correo" value="${esc(get('profile.email')||'')}" autocomplete="email">
+    </div>
+    <div class="enter"><button class="btn btn-primary" id="startBtn">Comenzar mi reto →</button></div>
+    <p class="cover-note">${cloudMode?'Tu avance se guarda de forma privada. Solo Meiby acompaña tu proceso. 🤍':'Tu avance se guarda solo en este dispositivo.'}</p>
+  </section>`;
+ },
+ inicio(){
+  const name=get("profile.name")||"";
+  const done=doneCount(),pct=done/21,R=66,C=2*Math.PI*R;
+  const today=firstUndoneDay();
+  let cells="";
+  for(let i=1;i<=21;i++){
+   const d=get("habits."+i+".mecumpli");
+   const locked=isLocked(i);
+   cells+=`<div class="day-cell ${d?'done':''} ${i===today?'today':''} ${locked?'locked':''}" ${locked?'':`data-go="dia:${i}"`}>${d?'✓':(locked?lockGlyph:i)}</div>`;
+  }
+  const prep=[
+   {go:"bienvenida",t:"Bienvenida",done:!!get("seen.bienvenida")},
+   {go:"antes",t:"Antes de comenzar",done:hasAny(get("antes"))},
+   {go:"compromiso",t:"Mi compromiso conmigo",done:!!get("compromiso.promesa")||!!get("compromiso.firma")},
+   {go:"deseos",t:"Lo que quiero para mí",done:(Array.isArray(DATA.deseos)&&DATA.deseos.length>0)||hasAny(get("deseoReflex"))},
+   {go:"futuro",t:"Carta a mi yo del futuro",done:hasAny(get("futuro"))},
+   {go:"partida",t:"Mi punto de partida",done:hasAny(get("partida"),["fecha"])},
+  ];
+  const prepDone=prep.filter(p=>p.done).length;
+  const prepAll=prepDone===prep.length;
+  const prepRows=prep.map(p=>`<a data-go="${p.go}"><span>${p.done?'<b class="pchk">✓</b> ':''}${p.t}</span><span class="arrow">${p.done?'':'→'}</span></a>`).join("");
+  return `<section class="view">
+   <div class="progress-card">
+     <p class="greet">Hola, <span class="hand">${esc(name||'valiente')}</span></p>
+     <div class="ring-wrap">
+       <svg width="150" height="150">
+         <circle cx="75" cy="75" r="${R}" fill="none" stroke="#EADCD5" stroke-width="8"/>
+         <circle cx="75" cy="75" r="${R}" fill="none" stroke="#6E2F43" stroke-width="8" stroke-linecap="round"
+           stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct)}"/>
+       </svg>
+       <div class="ring-num"><b>${done}<span style="font-size:20px;color:var(--ink-soft)">/21</span></b><span>días cumplidos</span></div>
+     </div>
+     <p class="hint" style="font-style:normal">${done===0?'Tu primer sello te espera.':done===21?'Lo lograste. Abre tu cierre. 🤍':'Sigue. Un día a la vez.'}</p>
+   </div>
+
+   <div class="prep-card ${prepAll?'done':''}">
+     <div class="prep-head"><span class="eyebrow" style="margin:0">Tus páginas</span><span class="prep-count">${prepDone}/${prep.length}</span></div>
+     <p class="lead" style="margin:6px 0 10px">Tu espacio para escribir. Ábrelas cuando quieras.</p>
+     <div class="section-links">${prepRows}</div>
+   </div>
+
+   ${done===21?`
+   <div class="today-card celebrate">
+     <div class="eyebrow" style="margin:0 0 6px">Lo lograste</div>
+     <h2 class="section">Completaste los 21 días.</h2>
+     <p class="lead" style="margin:6px 0 14px">Volviste a confiar en ti. Ya puedes abrir tu cierre.</p>
+     <button class="btn btn-primary" data-go="cierre">Abrir mi cierre 🤍</button>
+   </div>`:''}
+
+   <h2 class="section" style="margin-top:34px">Tus 21 días</h2>
+   <p class="lead">Toca un día para escribir tu reflexión. Cada círculo lleno es una promesa cumplida.</p>
+   <div class="grid-days">${cells}</div>
+
+   <h2 class="section" style="margin-top:34px">Mis hábitos</h2>
+   <p class="lead">Márcalos aquí cada día. Se guardan solos.</p>
+   ${trackerTableHTML()}
+   <p class="hint">Desliza la tabla hacia los lados →</p>
+   <div style="margin-top:16px">${habitEditorHTML()}</div>
+
+   <div class="section-links" style="margin-top:34px">
+     <a data-go="fondos"><span>Fondos de pantalla</span><span class="arrow">→</span></a>
+     <a data-go="cierre"><span>Cierre y diploma</span><span class="arrow">→</span></a>
+   </div>
+  </section>`;
+ },
+ bienvenida(){
+  const n=get("profile.name")||"";
+  return `<section class="view">
+   <div class="eyebrow">Paso 1 de 6 · Bienvenida</div>
+   <h1 class="title">Antes de empezar,<br>léeme.</h1>
+   <div class="divider"></div>
+   <div class="letter">
+     <p>Hola, ${esc(n||'hermosa')}:</p>
+     <p>Bienvenida a <em>Me Cumplo</em>. Me alegra tanto que estés aquí.</p>
+     <p>Quiero decirte algo desde el primer día: en estos 21 días no vamos a buscar la perfección. Vamos a aprender algo mucho más importante… a cumplirnos.</p>
+     <p>No importa cuántas veces te hayas fallado antes. No importa cuántas listas dejaste a medias, cuántos lunes empezaste y soltaste. Eso quedó atrás. Hoy empiezas de nuevo, y esta vez es distinto: esta vez es solo para ti.</p>
+     <p>No tienes que hacerlo todo bien. Solo tienes que volver cada día. Un paso pequeño, una promesa chiquita, un sello a la vez.</p>
+     <p>Yo estuve donde estás tú. Y si algo aprendí, es que la confianza en una misma no se recupera de golpe: se recupera cumpliéndote cosas pequeñas, todos los días, hasta que un día te das cuenta de que volviste a creerte.</p>
+     <p>Vamos juntas. Un día a la vez.</p>
+     <p class="sign">Meiby González<small><a href="https://instagram.com/meibyg" target="_blank" rel="noopener" class="ig-link">@meibyg</a></small></p>
+   </div>
+   <div class="btn-row mt"><button class="btn btn-primary" data-go="antes">Continuar →</button></div>
+  </section>`;
+ },
+ antes(){
+  return `<section class="view">
+   <div class="eyebrow">Paso 2 de 6 · Antes de comenzar</div>
+   <h1 class="title">Empecemos por ti.</h1>
+   <p class="lead">Sin prisa. Escribe lo primero que sientas, no lo que “deberías” contestar.</p>
+   ${prompt("¿Por qué decidí entrar a este reto?","antes.porque","Escribe desde el corazón…")}
+   ${prompt("¿Qué quiero cambiar?","antes.cambiar","")}
+   ${prompt("¿Qué hábito quiero construir?","antes.habito","")}
+   ${prompt("¿Qué me ha detenido hasta ahora?","antes.detenido","Sé honesta contigo.")}
+   ${prompt("¿Cómo quiero sentirme dentro de 21 días?","antes.sentir","")}
+   <div class="btn-row mt"><button class="btn btn-primary" data-go="compromiso">Hacer mi compromiso →</button></div>
+  </section>`;
+ },
+ compromiso(){
+  const f=get("compromiso.fecha")||todayStr();
+  return `<section class="view">
+   <div class="eyebrow center" style="text-align:center">Paso 3 de 6 · Mi compromiso conmigo</div>
+   <h1 class="title center">Una promesa.<br>Solo para ti.</h1>
+   <div class="divider" style="margin:26px auto"></div>
+   <div class="commit-card">
+     <div class="seal">${sealSVG()}</div>
+     <p style="font-family:var(--serif);font-size:17px;margin-bottom:14px">Yo, <b class="hand" style="font-size:24px;color:var(--wine)">${esc(get('profile.name')||'…')}</b>, me prometo que durante estos 21 días…</p>
+     <textarea data-p="compromiso.promesa" placeholder="…me voy a cumplir. Aunque sea imperfecto, aunque cueste, voy a volver cada día."></textarea>
+     <div class="firma-line">
+       <input type="text" data-p="compromiso.firma" placeholder="firma aquí" value="${esc(get('compromiso.firma')||'')}">
+       <div class="fl">Mi firma</div>
+     </div>
+     <div class="fecha">${esc(f)}</div>
+   </div>
+   <div class="btn-row mt center" style="justify-content:center"><button class="btn btn-primary" data-go="deseos">Continuar →</button></div>
+  </section>`;
+ },
+ partida(){
+  return `<section class="view">
+   <div class="eyebrow">Paso 6 de 6 · Mi punto de partida</div>
+   <h1 class="title">Dónde estoy hoy.</h1>
+   <p class="lead">Esta es tu foto del “antes”. Al terminar vas a volver aquí y no lo vas a creer.</p>
+   ${prompt("¿Cómo me siento hoy?","partida.sentir","")}
+   <div class="prompt">
+     <label>¿Qué tan comprometida estoy, del 1 al 10?</label>
+     ${scaleHTML("partida.compromiso")}
+   </div>
+   ${prompt("¿Qué hábitos tengo actualmente?","partida.actuales","Los buenos y los no tan buenos.")}
+   ${prompt("¿Qué hábitos quiero dejar?","partida.dejar","")}
+   ${prompt("¿Qué hábitos quiero crear?","partida.crear","")}
+   <div class="btn-row mt"><button class="btn btn-primary" data-go="dia:1">Empezar el día 1 →</button></div>
+  </section>`;
+ },
+ dia(nStr){
+  const n=parseInt(nStr,10);const d=DAYS[n-1];
+  let habits="";
+  activeHabits().forEach(h=>{
+   const on=get("habits."+n+"."+h.id);
+   habits+=`<div class="habit ${on?'on':''}" data-habit="${n}.${h.id}"><span class="check">${checkSVG}</span><span class="htxt">${h.t}</span></div>`;
+  });
+  const sealOn=get("habits."+n+".mecumpli");
+  const weekEnd=(n%7===0);
+  return `<section class="view">
+   <div class="day-head">
+     <div class="dnum">Día ${n} · ${WEEKS[d.w]}</div>
+     <div class="dname">${d.name}</div>
+   </div>
+   <p class="quote">${d.frase}</p>
+   <div class="mission">
+     <div class="lbl">Mi misión de hoy</div>
+     <p>${d.mision}</p>
+   </div>
+
+   <div class="habits">
+     ${habits}
+     <div class="habit seal ${sealOn?'on':''}" data-habit="${n}.mecumpli">
+       <span class="check">${checkSVG}</span>
+       <span class="htxt">Me cumplí hoy 🤍</span>
+     </div>
+   </div>
+
+   ${prompt("¿Cómo me sentí hoy?","days."+n+".senti","")}
+   ${prompt("¿Qué fue lo más difícil?","days."+n+".dificil","")}
+   ${prompt("¿Qué aprendí hoy?","days."+n+".aprendi","")}
+   <div class="prompt">
+     <label>Del 1 al 10, ¿cómo me sentí hoy?</label>
+     ${scaleHTML("days."+n+".escala")}
+   </div>
+   <div class="grat">
+     <div class="lbl">Hoy agradezco…</div>
+     ${fld("days."+n+".gratitud","algo, por pequeño que sea")}
+   </div>
+
+   ${weekEnd?`<div class="btn-row mt center" style="justify-content:center"><button class="btn btn-ghost" data-go="semana:${n/7}">Reflexión de la semana ${n/7} →</button></div>`:''}
+
+   <div class="pager">
+     <button ${n===1?'disabled':''} ${n===1?'':`data-go="dia:${n-1}"`}>← Día ${n-1}</button>
+     <button data-go="inicio">Inicio</button>
+     <button ${(n===21||isLocked(n+1))?'disabled':''} ${(n===21||isLocked(n+1))?'':`data-go="dia:${n+1}"`}>Día ${n+1} →</button>
+   </div>
+   ${(n<21&&isLocked(n+1))?`<p class="hint">Marca <b style="font-style:normal">“Me cumplí hoy”</b> para desbloquear el día ${n+1}.</p>`:''}
+  </section>`;
+ },
+ semana(wStr){
+  const w=parseInt(wStr,10);
+  return `<section class="view">
+   <div class="eyebrow">Reflexión · Semana ${w}</div>
+   <h1 class="title">Respira.<br>Mira lo andado.</h1>
+   <div class="divider"></div>
+   ${prompt("¿Qué cambió esta semana?","weekly."+w+".cambio","")}
+   ${prompt("¿De qué me siento orgullosa?","weekly."+w+".orgullo","")}
+   ${prompt("¿Qué quiero mejorar la próxima semana?","weekly."+w+".mejorar","")}
+   <div class="btn-row mt"><button class="btn btn-primary" data-go="dia:${w*7+1<=21?w*7+1:21}">Seguir →</button></div>
+  </section>`;
+ },
+ futuro(){
+  return `<section class="view">
+   <div class="eyebrow">Paso 5 de 6 · Carta a mi yo del futuro</div>
+   <h1 class="title">Para mi yo<br>del futuro.</h1>
+   <p class="lead">Escríbele a la persona que vas a ser en 21 días. La leerás de nuevo al terminar el reto.</p>
+   ${prompt("Querida yo del futuro…","futuro.carta","Cuéntale quién eres hoy y en quién quieres convertirte.")}
+   ${prompt("Lo que quiero aprender en estos 21 días…","futuro.aprendi","")}
+   ${prompt("El hábito que quiero mantener…","futuro.mantener","")}
+   ${prompt("La promesa que me hago a partir de hoy…","futuro.promesa","")}
+   <div class="btn-row mt"><button class="btn btn-primary" data-go="partida">Continuar →</button><button class="btn btn-ghost" data-go="inicio">Volver</button></div>
+  </section>`;
+ },
+ cierre(){
+  const n=get("profile.name")||"";
+  const done=doneCount();
+  if(done<21){
+   return `<section class="view">
+     <div class="cierre-lock">
+       <div class="seal-mark" style="width:60px;height:60px;margin:0 auto 20px;opacity:.5">${sealSVG()}</div>
+       <div class="eyebrow" style="text-align:center">Cierre</div>
+       <h1 class="title" style="text-align:center">Aún no.</h1>
+       <p class="lead" style="text-align:center;max-width:30ch;margin:14px auto 0">Para ver el cierre debes completar los 21 días. No mires el final todavía… disfruta el camino, un día a la vez.</p>
+       <p class="cierre-count">Llevas ${done} de 21 días</p>
+       <div class="btn-row mt center" style="justify-content:center"><button class="btn btn-ghost" data-go="inicio">Volver</button></div>
+     </div>
+   </section>`;
+  }
+  const fCarta=get("futuro.carta"),fApr=get("futuro.aprendi"),fMan=get("futuro.mantener"),fProm=get("futuro.promesa");
+  const hasFuturo=fCarta||fApr||fMan||fProm;
+  return `<section class="view">
+   <div class="eyebrow">Cierre</div>
+   <h1 class="title">Lo lograste.</h1>
+   <div class="divider"></div>
+   <div class="letter">
+     <p>${esc(n||'Hermosa')}:</p>
+     <p>Llegaste al final. Quiero que te detengas un momento y lo dejes entrar de verdad: <em>lo lograste.</em></p>
+     <p>Fueron 21 días. Pero el verdadero logro no fue tacharlos. No fue llenar los círculos ni tener la racha perfecta.</p>
+     <p>El verdadero logro fue volver a confiar en ti. Fue demostrarte, día tras día, que cuando te das tu palabra, te la cumples. Y esa es la base de todo lo que viene después.</p>
+     <p>Hoy eres una persona distinta a la que empezó. Más tuya. Más firme. Con una prueba en la mano de que sí puedes.</p>
+     <p>Esto no se acaba aquí. Esto apenas despega. Sigue cumpliéndote, aunque nadie te vea, aunque no sea perfecto, aunque cueste.</p>
+     <p>Estoy orgullosa de ti. Ahora te toca a ti estarlo.</p>
+     <p class="sign">Con el corazón, Meiby González<small><a href="https://instagram.com/meibyg" target="_blank" rel="noopener" class="ig-link">@meibyg</a></small></p>
+   </div>
+   ${hasFuturo?`
+   <div class="divider" style="margin:38px auto"></div>
+   <div class="eyebrow" style="text-align:center">La carta que te escribiste al empezar</div>
+   <h2 class="section" style="text-align:center">Léela ahora.</h2>
+   <div class="futuro-echo">
+     ${fCarta?`<p>${esc(fCarta)}</p>`:''}
+     ${fApr?`<p><em>Lo que querías aprender:</em> ${esc(fApr)}</p>`:''}
+     ${fMan?`<p><em>El hábito que querías mantener:</em> ${esc(fMan)}</p>`:''}
+     ${fProm?`<p><em>Tu promesa:</em> ${esc(fProm)}</p>`:''}
+   </div>`:''}
+   <div class="btn-row mt center" style="justify-content:center"><button class="btn btn-primary" data-go="diploma">Reclamar mi diploma →</button></div>
+  </section>`;
+ },
+ tracker(){
+  return `<section class="view">
+   <div class="eyebrow">Habit tracker</div>
+   <h1 class="title">Todo tu reto,<br>de un vistazo.</h1>
+   <p class="lead">Marca cada casilla. También puedes marcarlas desde inicio.</p>
+   ${trackerTableHTML()}
+   <p class="hint">Desliza la tabla hacia los lados →</p>
+
+   <div class="eyebrow" style="margin-top:38px">Mis hábitos</div>
+   <h2 class="section">Hazlo tuyo.</h2>
+   <p class="lead">Agrega o borra los hábitos que quieras. Toca la × para quitar cualquiera.</p>
+   ${habitEditorHTML()}
+
+   <div class="btn-row mt"><button class="btn btn-ghost no-print" onclick="window.print()">Imprimir / Guardar PDF</button><button class="btn btn-ghost" data-go="inicio">Volver</button></div>
+  </section>`;
+ },
+ deseos(){
+  const list=DATA.deseos||[];
+  let items=list.map((d,i)=>`<div class="deseo ${d.done?'done':''}" >
+     <span class="dcheck" data-toggledeseo="${i}">${checkSVG}</span>
+     <span class="dtxt">${esc(d.t)}</span>
+     <button class="ddel" data-deldeseo="${i}" aria-label="Quitar">×</button>
+   </div>`).join("");
+  return `<section class="view">
+   <div class="eyebrow">Paso 4 de 6 · Lo que quiero para mí</div>
+   <h1 class="title">Eso que siempre<br>quiero hacer.</h1>
+   <p class="lead">Todo lo que siempre quieres hacer y nunca tienes tiempo. Escríbelo. Verlo en una lista lo vuelve posible.</p>
+   <div class="deseo-list">${items||'<p class="hint" style="font-style:normal">Tu lista está en blanco… por ahora. Empieza con una.</p>'}</div>
+   <div class="add-row">
+     <input type="text" id="newDeseo" placeholder="Algo que me encantaría hacer…" maxlength="80">
+     <button class="btn btn-primary" data-adddeseo>Agregar</button>
+   </div>
+   <p class="hint">Marca el círculo cuando la cumplas. 🤍</p>
+   <div class="divider" style="margin:34px 0"></div>
+   ${prompt("Si tuviera tiempo y valentía, me encantaría…","deseoReflex.valentia","")}
+   ${prompt("De toda mi lista, la que quiero cumplir sí o sí en estos 21 días es…","deseoReflex.una","")}
+   <div class="btn-row mt"><button class="btn btn-primary" data-go="futuro">Continuar →</button><button class="btn btn-ghost" data-go="inicio">Volver</button></div>
+  </section>`;
+ },
+ fondos(){
+  if(fondoSel!==null && FONDOS[fondoSel]){
+   const f=FONDOS[fondoSel];
+   const frame = fondoPhoto
+     ? `<img src="${fondoPhoto}" alt="tu foto">`
+     : `<span class="wframe-ph">tu foto aquí</span>`;
+   return `<section class="view">
+     <button class="btn btn-ghost" data-fondoback style="margin-bottom:16px">← Todos los fondos</button>
+     <p class="hint" style="margin:0 0 16px">Pon tu foto y toma una captura de pantalla para tu historia 🤍</p>
+     <div class="wfull" style="background:${f.g}">
+       <div class="wtxt" style="font-size:${fondoSize(f.t,true)}px">${esc(f.t)}</div>
+       <div class="wframe">${frame}</div>
+       <div class="wcredit"><span class="wctag">Reto #MeCumplo</span><span class="wcby">por @meibyg</span></div>
+     </div>
+     <div class="btn-row mt center" style="justify-content:center">
+       <label class="btn btn-primary wupload"><input type="file" accept="image/*" id="fondoFile" hidden>${fondoPhoto?'Cambiar mi foto':'Poner mi foto'}</label>
+       ${fondoPhoto?'<button class="btn btn-ghost" data-fotoclear>Quitar foto</button>':''}
+     </div>
+   </section>`;
+  }
+  let grid=FONDOS.map((f,i)=>`<div class="wthumb" data-fondo="${i}" style="background:${f.g}"><div class="wtxt" style="font-size:${fondoSize(f.t,false)}px">${esc(f.t)}</div><div class="wig">#MeCumplo</div></div>`).join("");
+  return `<section class="view">
+   <div class="eyebrow">Fondos de pantalla</div>
+   <h1 class="title">Llévalo<br>en tu bolsillo.</h1>
+   <p class="lead">Toca el que más te guste para abrirlo, y tómale una captura.</p>
+   <div class="wgrid">${grid}</div>
+   <div class="btn-row mt"><button class="btn btn-ghost" data-go="inicio">Volver</button></div>
+  </section>`;
+ },
+ diploma(){
+  const done=doneCount();
+  if(done<21) return VIEWS.cierre();
+  const nombre=(get("profile.name")||"").trim();
+  const apellido=(get("profile.apellido")||"").trim();
+  const full=(nombre+" "+apellido).trim();
+  return `<section class="view cert-wrap">
+    ${certCardDone(full,todayStr())}
+    <p class="cert-share">Compártelo en tus historias y etiqueta a @meibyg 🤍</p>
+    <div class="btn-row center" style="justify-content:center">
+      <button class="btn btn-primary no-print" onclick="window.print()">Guardar / Imprimir</button>
+      <button class="btn btn-ghost" data-go="cierre">Volver al cierre</button>
+    </div>
+    <p class="hint">Tip: toma una captura de pantalla del certificado para subirlo a tus historias.</p>
+   </section>`;
+ },
+ admin(){
+  // Modo local (vista previa): muestra alumnas de ejemplo para que pruebes el panel
+  if(!cloudMode){
+   const self={nombre:get("profile.name")||"Tú",apellido:get("profile.apellido")||"",email:"tu-cuenta",data:DATA,updated_at:null};
+   const rows=[self,...DEMO_ROWS];
+   if(ADMIN.sel){ const row=rows.find(r=>r.email===ADMIN.sel)||self; return adminDetail(row); }
+   const ordered=rows.slice().sort((a,b)=>doneCountOf(b.data)-doneCountOf(a.data));
+   return `<section class="view">
+     <div class="eyebrow">Panel de Meiby</div>
+     <h1 class="title">Tus alumnas.</h1>
+     <p class="note">Esto es una <b>demostración</b> con alumnas de ejemplo. Toca cualquier nombre y verás su progreso completo. Cuando conectes Supabase, aquí aparecerán tus alumnas reales igualito.</p>
+     ${ordered.map((r,i)=>adminRow(r,i)).join("")}
+   </section>`;
+  }
+  if(!ADMIN.auth){
+   return `<section class="view">
+     <div class="eyebrow">Panel de Meiby</div>
+     <h1 class="title">Solo para ti.</h1>
+     <p class="lead">Escribe tu clave de administradora para ver el avance de tus alumnas.</p>
+     <div class="add-row">
+       <input type="password" id="adminSecret" placeholder="clave de administradora" value="${esc(ADMIN.secret||'')}">
+       <button class="btn btn-primary" data-adminauth>Entrar</button>
+     </div>
+     ${ADMIN.err?`<p class="hint" style="color:var(--wine)">${esc(ADMIN.err)}</p>`:''}
+     <div class="btn-row mt"><button class="btn btn-ghost" data-go="inicio">Volver</button></div>
+   </section>`;
+  }
+  if(ADMIN.sel){ const row=ADMIN.rows.find(r=>r.email===ADMIN.sel); if(row) return adminDetail(row); }
+  const rows=(ADMIN.rows||[]).slice().sort((a,b)=>(doneCountOf(b.data)-doneCountOf(a.data)));
+  return `<section class="view">
+    <div class="eyebrow">Panel de Meiby</div>
+    <h1 class="title">Tus alumnas.</h1>
+    <p class="lead">${rows.length} en el reto. Toca un nombre para ver su proceso completo.</p>
+    <div class="add-row" style="margin-bottom:18px"><input type="text" id="adminFilter" placeholder="Buscar por nombre o correo…" oninput="ADMIN.q=this.value;rerender()" value="${esc(ADMIN.q||'')}"></div>
+    ${rows.filter(r=>adminMatch(r)).map((r,i)=>adminRow(r,i)).join("")||'<p class="hint" style="font-style:normal">Nadie todavía.</p>'}
+    <div class="btn-row mt"><button class="btn btn-ghost" data-adminreload>Actualizar</button><button class="btn btn-ghost" data-go="inicio">Salir del panel</button></div>
+  </section>`;
+ }
+};
+
+function adminMatch(r){const q=(ADMIN.q||"").toLowerCase().trim();if(!q)return true;return ((r.nombre||"")+" "+(r.apellido||"")+" "+(r.email||"")).toLowerCase().includes(q);}
+function adminRow(r,i){
+ const dc=doneCountOf(r.data);
+ const nm=((r.nombre||"")+" "+(r.apellido||"")).trim()||r.email;
+ return `<div class="alumna" data-adminopen="${esc(r.email)}">
+   <div class="al-info"><div class="al-name">${esc(nm)}</div><div class="al-mail">${esc(r.email||"")}</div></div>
+   <div class="al-prog"><b>${dc}</b><span>/21</span></div>
+ </div>`;
+}
+function gv(obj,path){let o=obj;for(const p of path.split("."))o=(o&&o[p]!=null)?o[p]:undefined;return o;}
+function doneCountOf(d){let c=0;if(!d)return 0;for(let i=1;i<=21;i++)if(gv(d,"habits."+i+".mecumpli"))c++;return c;}
+function adminDetail(row){
+ const d=row.data||{};
+ const nm=((row.nombre||"")+" "+(row.apellido||"")).trim()||row.email;
+ const dc=doneCountOf(d);
+ let grid="";
+ for(let i=1;i<=21;i++)grid+=`<div class="day-cell ${gv(d,"habits."+i+".mecumpli")?'done':''}" style="cursor:default">${gv(d,"habits."+i+".mecumpli")?'✓':i}</div>`;
+ const habitList=(Array.isArray(d.habitList)?d.habitList.map(h=>({id:h.id,t:h.label})):DEFAULT_HABITS.concat((d.customHabits||[]).map(h=>({id:h.id,t:h.label}))));
+ let daysHTML="";
+ for(let i=1;i<=21;i++){
+   const dd=gv(d,"days."+i)||{}; const seal=gv(d,"habits."+i+".mecumpli");
+   const any=dd.senti||dd.dificil||dd.aprendi||dd.gratitud||dd.escala||seal;
+   if(!any) continue;
+   const hb=habitList.filter(h=>gv(d,"habits."+i+"."+h.id)).map(h=>h.t);
+   daysHTML+=`<div class="ad-day"><div class="ad-dh"><b>Día ${i}</b>${seal?'<span class="ad-seal">se cumplió ✓</span>':'<span class="ad-no">sin sello</span>'}${dd.escala?`<span class="ad-sc">${dd.escala}/10</span>`:''}</div>
+     ${dd.senti?`<p><em>Cómo se sintió:</em> ${esc(dd.senti)}</p>`:''}
+     ${dd.dificil?`<p><em>Lo más difícil:</em> ${esc(dd.dificil)}</p>`:''}
+     ${dd.aprendi?`<p><em>Aprendió:</em> ${esc(dd.aprendi)}</p>`:''}
+     ${dd.gratitud?`<p><em>Agradeció:</em> ${esc(dd.gratitud)}</p>`:''}
+     ${hb.length?`<p class="ad-hab">${hb.join(" · ")}</p>`:''}
+   </div>`;
+ }
+ const deseos=(d.deseos||[]);
+ const promesa=gv(d,"compromiso.promesa");
+ return `<section class="view">
+   <button class="btn btn-ghost" data-adminback style="margin-bottom:18px">← Todas</button>
+   <div class="ad-head">
+     <h1 class="title" style="font-size:30px">${esc(nm)}</h1>
+     <p class="al-mail">${esc(row.email||"")}</p>
+     <p class="lead" style="margin-top:6px"><b style="color:var(--wine)">${dc} de 21 días cumplidos</b></p>
+   </div>
+   ${dc>=21?`<div class="cert-wrap" style="margin-bottom:22px">${certCardDone(nm,"")}<p class="cert-share">Ya se graduó. Puedes felicitarla. 🤍</p></div>`:''}
+   <div class="grid-days" style="margin-bottom:24px">${grid}</div>
+   ${promesa?`<div class="ad-day"><div class="ad-dh"><b>Su promesa</b></div><p>${esc(promesa)}</p></div>`:''}
+   ${daysHTML||'<p class="hint" style="font-style:normal">Aún no ha escrito reflexiones.</p>'}
+   ${deseos.length?`<div class="ad-day"><div class="ad-dh"><b>Lo que quiere para sí</b></div>${deseos.map(x=>`<p>${x.done?'✓ ':'· '}${esc(x.t)}</p>`).join("")}</div>`:''}
+   <div class="btn-row mt"><button class="btn btn-ghost" data-adminback>← Volver a la lista</button></div>
+ </section>`;
+}
+
+function scaleHTML(path){
+ const v=get(path);let b="";
+ for(let i=1;i<=10;i++)b+=`<button class="${v==i?'on':''}" data-scale="${path}" data-val="${i}">${i}</button>`;
+ return `<div class="scale">${b}</div><div class="scale-ends"><span>Nada</span><span>Muchísimo</span></div>`;
+}
+function firstUndoneDay(){for(let i=1;i<=21;i++)if(!get("habits."+i+".mecumpli"))return i;return 21;}
+function isLocked(n){if(n<=1)return false;return !get("habits."+(n-1)+".mecumpli");}
+function todayStr(){const d=new Date();return d.toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"});}
+function certMedalSVG(){return `<svg viewBox="0 0 80 80" aria-hidden="true"><defs><radialGradient id="mg${Math.random().toString(36).slice(2,6)}" cx="38%" cy="32%"><stop offset="0%" stop-color="#F6E3B8"/><stop offset="55%" stop-color="#E7C48C"/><stop offset="100%" stop-color="#B98A46"/></radialGradient></defs><circle cx="40" cy="40" r="30" fill="#E7C48C"/><circle cx="40" cy="40" r="30" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"/><circle cx="40" cy="40" r="23" fill="none" stroke="rgba(90,36,56,.35)" stroke-width="1"/><path d="M30 41l7 7 14-16" fill="none" stroke="#5A2438" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+function certCardDone(full,dateStr){
+  let sellos="";for(let i=1;i<=21;i++)sellos+='<i></i>';
+  return `<div class="cert">
+      <div class="cert-k">Me Cumplo · Certificado</div>
+      <div class="cert-medal">${certMedalSVG()}</div>
+      <div class="cert-pre">Este certificado honra a</div>
+      <div class="cert-name">${esc(full||"Mi nombre")}</div>
+      <div class="cert-flourish"><i></i><b>✦</b><i></i></div>
+      <div class="cert-phrase">Volví a confiar en mí.</div>
+      <div class="cert-sub">21 días eligiéndome. 21 promesas cumplidas. Me di mi palabra… y me la cumplí.</div>
+      <div class="cert-meta">Reto completado · ${esc(dateStr||todayStr())}</div>
+      <div class="cert-sellos">${sellos}</div>
+      <div class="cert-sign">Meiby González</div>
+      <div class="cert-ig">@meibyg</div>
+    </div>`;
+}
+const lockGlyph='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#C4B4AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+function flash(msg){const t=document.getElementById("savedTag");t.textContent=msg;t.classList.add("show");clearTimeout(flash._t);flash._t=setTimeout(()=>{t.classList.remove("show");setTimeout(()=>{t.textContent="Guardado ✓";},300);},2000);}
+
+/* ---------- router ---------- */
+function go(route){
+ const [name,arg]=route.split(":");
+ if(name==="dia"){const dn=parseInt(arg,10);if(isLocked(dn)){flash("Cumple el día "+(dn-1)+" para desbloquear el día "+dn+" 🔒");return;}if(!DATA.onboarded){DATA.onboarded=true;scheduleSave();}}
+ if(name==="bienvenida"){if(!get("seen.bienvenida")){set("seen.bienvenida",true);}}
+ if(name==="admin"){ADMIN.sel=null;}
+ if(name==="fondos"){fondoSel=null;}
+ current=route;
+ window.scrollTo({top:0,behavior:"auto"});
+ const hdr=document.getElementById("hdr");
+ const ftr=document.getElementById("ftr");
+ stopCountdown();
+ if(name==="cover"||name==="espera"){hdr.classList.add("hidden");ftr.classList.add("hidden");}
+ else{hdr.classList.remove("hidden");ftr.classList.remove("hidden");}
+ app.innerHTML=VIEWS[name]?VIEWS[name](arg):VIEWS.inicio();
+ if(name==="espera")startCountdown();
+ closeMenu();
+}
+function rerender(){const[n,a]=current.split(":");const y=window.scrollY;app.innerHTML=VIEWS[n]?VIEWS[n](a):VIEWS.inicio();window.scrollTo(0,y);}
+
+/* ---------- eventos ---------- */
+app.addEventListener("click",e=>{
+ const goEl=e.target.closest("[data-go]");
+ if(goEl){go(goEl.dataset.go);return;}
+ const start=e.target.closest("#startBtn");
+ if(start){
+   const nombre=(document.getElementById("inNombre").value||"").trim();
+   const apellido=(document.getElementById("inApellido").value||"").trim();
+   const email=(document.getElementById("inEmail").value||"").trim().toLowerCase();
+   if(cloudMode && !email){flash("Escribe tu correo para guardar tu avance 💌");return;}
+   start.disabled=true;start.textContent="Un momento…";
+   (async()=>{
+     if(cloudMode && email){
+       const remote=await cloudLoad(email);
+       if(remote && typeof remote==="object"){ DATA=Object.assign(fresh(),remote); }
+       if(!Array.isArray(DATA.customHabits))DATA.customHabits=[];
+       if(!Array.isArray(DATA.deseos))DATA.deseos=[];
+       if(!DATA.deseoReflex)DATA.deseoReflex={};
+       if(!DATA.seen)DATA.seen={};
+       if(typeof DATA.onboarded!=="boolean")DATA.onboarded=(doneCount()>0);
+       if(!DATA.profile)DATA.profile={};
+     }
+     DATA.profile.name=nombre;DATA.profile.apellido=apellido;DATA.profile.email=email;
+     DATA.started=true;
+     if(!get("compromiso.fecha"))set("compromiso.fecha",todayStr());
+     scheduleSave();
+     go(DATA.onboarded?"inicio":"bienvenida");
+   })();
+   return;
+ }
+ const hb=e.target.closest("[data-habit]");
+ if(hb){
+   const p="habits."+hb.dataset.habit;const cur=!!get(p);set(p,!cur);
+   hb.classList.toggle("on",!cur);hb.classList.toggle("off",cur);
+   const chk=hb.querySelector(".check");if(chk){chk.classList.add("pressed");setTimeout(()=>chk.classList.remove("pressed"),350);}
+   const cv=current.split(":")[0];
+   if(hb.dataset.habit.endsWith(".mecumpli")&&(cv==="dia"||cv==="inicio")){
+     const y=window.scrollY;
+     setTimeout(()=>{app.innerHTML=VIEWS[cv](current.split(":")[1]);window.scrollTo(0,y);},380);
+   }
+   return;
+ }
+ const sc=e.target.closest("[data-scale]");
+ if(sc){const p=sc.dataset.scale;set(p,parseInt(sc.dataset.val,10));sc.parentElement.querySelectorAll("button").forEach(b=>b.classList.remove("on"));sc.classList.add("on");return;}
+
+ if(e.target.closest("[data-addhabit]")){
+   const inp=document.getElementById("newHabit");const v=(inp?.value||"").trim();
+   if(!v){flash("Escribe un hábito primero ✍️");return;}
+   ensureHabitList().push({id:"h"+Date.now(),label:v});scheduleSave();rerender();return;
+ }
+ const dh=e.target.closest("[data-delhabit]");
+ if(dh){const id=dh.dataset.delhabit;DATA.habitList=ensureHabitList().filter(h=>h.id!==id);scheduleSave();rerender();return;}
+
+ if(e.target.closest("[data-adddeseo]")){
+   const inp=document.getElementById("newDeseo");const v=(inp?.value||"").trim();
+   if(!v){flash("Escribe algo que quieras hacer 🤍");return;}
+   if(!DATA.deseos)DATA.deseos=[];
+   DATA.deseos.push({t:v,done:false});scheduleSave();rerender();return;
+ }
+ const dd=e.target.closest("[data-deldeseo]");
+ if(dd){const i=+dd.dataset.deldeseo;(DATA.deseos||[]).splice(i,1);scheduleSave();rerender();return;}
+ const dt=e.target.closest("[data-toggledeseo]");
+ if(dt){const i=+dt.dataset.toggledeseo;if(DATA.deseos&&DATA.deseos[i]){DATA.deseos[i].done=!DATA.deseos[i].done;scheduleSave();rerender();}return;}
+
+ if(e.target.closest("[data-adminauth]")){
+   const inp=document.getElementById("adminSecret");const s=(inp?.value||"").trim();
+   if(!s){flash("Escribe tu clave 🔑");return;}
+   ADMIN.secret=s;ADMIN.err="";
+   const btn=e.target.closest("[data-adminauth]");btn.disabled=true;btn.textContent="Entrando…";
+   (async()=>{
+     try{ const rows=await adminAll(s); ADMIN.rows=Array.isArray(rows)?rows:[]; ADMIN.auth=true; }
+     catch(err){ ADMIN.err="Clave incorrecta o sin conexión. Revisa e intenta de nuevo."; }
+     rerender();
+   })();
+   return;
+ }
+ if(e.target.closest("[data-adminreload]")){
+   (async()=>{ try{ const rows=await adminAll(ADMIN.secret); ADMIN.rows=Array.isArray(rows)?rows:[]; }catch(err){} rerender(); })();
+   return;
+ }
+ const ao=e.target.closest("[data-adminopen]");
+ if(ao){ADMIN.sel=ao.dataset.adminopen;window.scrollTo(0,0);rerender();return;}
+ if(e.target.closest("[data-adminback]")){ADMIN.sel=null;window.scrollTo(0,0);rerender();return;}
+ const fo=e.target.closest("[data-fondo]");
+ if(fo){fondoSel=+fo.dataset.fondo;window.scrollTo(0,0);rerender();return;}
+ if(e.target.closest("[data-fondoback]")){fondoSel=null;window.scrollTo(0,0);rerender();return;}
+ if(e.target.closest("[data-fotoclear]")){fondoPhoto=null;rerender();return;}
+ if(e.target.closest("[data-previewgo]")){
+   const k=(document.getElementById("previewKey")?.value||"").trim().replace(/\s/g,"").toLowerCase();
+   if(k===PREVIEW_KEY.toLowerCase()){bypassLaunch=true;go(DATA.started?"inicio":"cover");}
+   else{flash("Clave incorrecta 🔒");}
+   return;
+ }
+ if(e.target.closest("[data-resetgo]")){
+   DATA=fresh();fondoSel=null;fondoPhoto=null;ADMIN={auth:false,secret:"",rows:[],sel:null,err:"",q:""};
+   doSave();go("cover");return;
+ }
+});
+app.addEventListener("input",e=>{
+ const t=e.target;
+ if(t.matches("[data-p]"))set(t.dataset.p,t.value);
+});
+app.addEventListener("change",e=>{
+ if(e.target.id==="fondoFile"){
+   const file=e.target.files&&e.target.files[0];if(!file)return;
+   const r=new FileReader();
+   r.onload=()=>{fondoPhoto=r.result;rerender();};
+   r.readAsDataURL(file);
+ }
+});
+app.addEventListener("keydown",e=>{
+ if(e.key!=="Enter")return;
+ if(e.target.id==="newHabit"){e.preventDefault();app.querySelector("[data-addhabit]")?.click();}
+ if(e.target.id==="newDeseo"){e.preventDefault();app.querySelector("[data-adddeseo]")?.click();}
+ if(e.target.id==="adminSecret"){e.preventDefault();app.querySelector("[data-adminauth]")?.click();}
+ if(e.target.id==="previewKey"){e.preventDefault();app.querySelector("[data-previewgo]")?.click();}
+});
+
+/* ---------- menú ---------- */
+const menu=document.getElementById("menu");
+const MENU=[
+ ["inicio","Inicio","01"],["bienvenida","Bienvenida","02"],["antes","Antes de comenzar","03"],
+ ["compromiso","Mi compromiso","04"],["partida","Mi punto de partida","05"],["dia:1","Los 21 días","06"],
+ ["tracker","Habit tracker","07"],["deseos","Lo que quiero para mí","08"],["semana:1","Reflexión semanal","09"],["futuro","Carta al futuro","10"],
+ ["fondos","Fondos de pantalla","11"],["cierre","Cierre y diploma","12"],
+ ["admin","· Panel de Meiby","♦"],
+ ["reiniciar","· Empezar de nuevo","↺"]
+];
+document.getElementById("menuNav").innerHTML=MENU.map(m=>`<a data-go="${m[0]}"><span>${m[1]}</span><span class="idx">${m[2]}</span></a>`).join("");
+function openMenu(){menu.classList.add("open");}
+function closeMenu(){menu.classList.remove("open");}
+document.getElementById("menuOpen").addEventListener("click",openMenu);
+document.getElementById("menuClose").addEventListener("click",closeMenu);
+menu.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){go(g.dataset.go);}});
+
+/* ---------- init ---------- */
+(async function(){
+ const raw=await Store.get(KEY);
+ DATA=raw?JSON.parse(raw):fresh();
+ if(!DATA.profile)DATA.profile={};
+ if(!Array.isArray(DATA.customHabits))DATA.customHabits=[];
+ if(!Array.isArray(DATA.deseos))DATA.deseos=[];
+ if(!DATA.deseoReflex)DATA.deseoReflex={};
+ if(!DATA.seen)DATA.seen={};
+ if(typeof DATA.onboarded!=="boolean")DATA.onboarded=(doneCount()>0);
+ if(cloudMode && DATA.profile.email){
+   const remote=await cloudLoad(DATA.profile.email);
+   if(remote && typeof remote==="object"){
+     DATA=Object.assign(fresh(),remote);
+     if(!DATA.profile)DATA.profile={};
+     if(!Array.isArray(DATA.customHabits))DATA.customHabits=[];
+     if(!Array.isArray(DATA.deseos))DATA.deseos=[];
+     if(!DATA.deseoReflex)DATA.deseoReflex={};
+   }
+ }
+ if(preLaunch()){ go("espera"); }
+ else { go(DATA.started?"inicio":"cover"); }
+})();
+</script>
+</body>
+</html>

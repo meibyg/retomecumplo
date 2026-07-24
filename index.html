@@ -126,11 +126,45 @@ textarea::placeholder,input::placeholder{color:#C4B4AE;font-style:italic}
 .cover .namebox input:focus{box-shadow:none;border-color:var(--wine);background:#fff}
 .cover .namebox span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px;font-family:var(--sans)}
 .cover-note{margin-top:22px;font-size:12px;color:var(--ink-soft);max-width:26ch;opacity:0;animation:fade 1s 1.7s forwards}
-.countdown{display:flex;gap:16px;margin-top:32px;opacity:0;animation:fade 1s .9s forwards}
-.countdown>div{display:flex;flex-direction:column;align-items:center;min-width:52px}
+.cdlbl{margin-top:24px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,236,217,.62);opacity:0;animation:fade 1s .8s forwards}
+.countdown{display:flex;gap:16px;margin-top:14px;opacity:0;animation:fade 1s .9s forwards}.countdown>div{display:flex;flex-direction:column;align-items:center;min-width:52px}
 .countdown b{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;color:var(--wine)}
 .countdown span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:7px}
-.espera-note{margin-top:30px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);opacity:0;animation:fade 1s 1.2s forwards}
+/* cuenta regresiva: compacta y legible */
+.esp{min-height:100dvh!important;justify-content:center!important;padding:26px 22px calc(24px + env(safe-area-inset-bottom))!important}
+.esp .kicker{margin-bottom:12px!important;font-size:10px!important}
+.esp h1{font-size:clamp(38px,12.5vw,56px)!important;line-height:1!important}
+.esp h1 em{display:inline!important}
+.esp .seal-mark{width:38px!important;height:38px!important;margin:14px 0 0!important}
+.esp .fechas{margin-top:18px!important;padding:2px 16px!important}
+.esp .fila{padding:11px 0!important}
+.esp .fdia{font-size:13px!important}
+.esp .ftxt{font-size:15.5px!important}
+.esp .cdlbl{margin-top:18px!important;font-size:10px!important}
+.esp .countdown{gap:12px!important;margin-top:9px!important}
+.esp .countdown b{font-size:31px!important}
+.esp .countdown span{font-size:9px!important;margin-top:4px!important}
+.esp .countdown>div{min-width:44px!important}
+.esp .wawrap{margin-top:20px!important}
+.esp .wakick{margin-bottom:9px!important;font-size:10px!important}
+.esp .wacard{padding:12px 14px!important;gap:12px!important;border-radius:15px!important}
+.esp .wacard .waic{width:38px!important;height:38px!important}
+.esp .wacard .wasvg,.esp .wacard .wasvg svg{width:20px!important;height:20px!important}
+.esp .wacard .watxt b{font-size:15px!important}
+.esp .wacard .watxt span{font-size:11.5px!important}
+.esp .espera-access{margin-top:20px!important}
+.esp .espera-access{position:absolute!important;top:calc(14px + env(safe-area-inset-top))!important;right:12px!important;margin:0!important;z-index:6;gap:6px}
+.esp .espera-access input{width:118px!important;padding:9px 12px!important;font-size:16px!important}
+.esp .espera-access .espera-preview{font-size:11px!important;letter-spacing:.12em}
+.keydot{position:absolute;top:calc(14px + env(safe-area-inset-top));right:12px;z-index:5;background:none;border:none;cursor:pointer;padding:13px;line-height:0;opacity:0;animation:fade 1s 1.6s forwards}
+.keydot i{display:block;width:18px;height:18px;border-radius:50%;background:rgba(231,196,140,.38);border:1.5px solid rgba(231,196,140,.6);transition:.25s}
+.keydot:hover i,.keydot:focus-visible i{background:rgba(231,196,140,.9);transform:scale(1.2)}
+.fechas{margin-top:26px;width:min(340px,86vw);background:#F6ECD9;border-radius:18px;padding:4px 20px;box-shadow:0 10px 28px rgba(0,0,0,.22);opacity:0;animation:fade 1s 1.1s forwards}
+.fila{display:flex;gap:10px;align-items:baseline;justify-content:center;padding:14px 0;border-bottom:1px solid rgba(74,29,46,.14)}
+.fila:last-child{border-bottom:none}
+.fdia{flex:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;color:#6E2F43}
+.ftxt{font-family:var(--serif);font-size:17px;line-height:1.3;color:#2E2430}
+.fila.on .ftxt{color:#6E2F43;font-weight:500}
 .espera-preview{background:none;border:none;color:var(--ink-soft);font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:40px;cursor:pointer;opacity:0;animation:fade 1s 1.6s forwards;transition:.15s;border-bottom:1px solid var(--line)}
 .espera-preview:hover{color:var(--wine);border-color:var(--rose)}
 .espera-access{display:flex;gap:8px;align-items:center;margin-top:40px;opacity:0;animation:fade 1s 1.6s forwards}
@@ -452,7 +486,9 @@ const cloudMode = !!(SUPABASE_URL && SUPABASE_ANON);
    Formato: año, mes-1, día  (el mes va de 0 a 11, por eso julio = 6)
    Para QUITAR la cuenta regresiva, pon:  const LAUNCH = null;
    ============================================================ */
-const LAUNCH = new Date(2026, 7, 3, 0, 0, 0); // 3 de agosto de 2026
+const LAUNCH = new Date(2026, 7, 2, 0, 0, 0);  // domingo 2 de agosto · se ABRE la página
+const START  = new Date(2026, 7, 3, 0, 0, 0);  // lunes 3 de agosto · empieza el DÍA 1
+const START_TXT = "lunes 3 de agosto";
 const PREVIEW_KEY = "Santi1903"; // clave para que solo tú puedas ver la app antes del lanzamiento
 
 /* Grupo privado de WhatsApp del reto */
@@ -607,8 +643,9 @@ const app=document.getElementById("app");
 let current="cover";
 let ADMIN={auth:false,secret:"",rows:[],sel:null,err:"",q:""};
 let fondoSel=null, fondoPhoto=null;
-let bypassLaunch=false, cdTimer=null;
+let bypassLaunch=false, cdTimer=null, showKey=false;
 function preLaunch(){return !bypassLaunch && LAUNCH && Date.now()<LAUNCH.getTime();}
+function preStart(){return !bypassLaunch && START && Date.now()<START.getTime();}
 function esApp(){try{return window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true;}catch(e){return false;}}
 function fmtCountdown(){let d=LAUNCH?LAUNCH.getTime()-Date.now():0;if(d<0)d=0;return{days:Math.floor(d/86400000),hrs:Math.floor(d%86400000/3600000),mins:Math.floor(d%3600000/60000),secs:Math.floor(d%60000/1000)};}
 function stopCountdown(){if(cdTimer){clearInterval(cdTimer);cdTimer=null;}}
@@ -777,40 +814,53 @@ const VIEWS={
    <h1 class="title center">Guárdala<br>como app.</h1>
    <p class="lead center" style="margin:14px auto 26px;max-width:30ch">Así la abres desde tu pantalla de inicio, a pantalla completa y con un toque. Toma 10 segundos.</p>
    <div class="pasos">${lista}</div>
-   <p class="note" style="text-align:center">Después de instalarla, ábrela desde tu pantalla de inicio y continúa ahí. 🤍</p>
+   <p class="note" style="text-align:center">${preLaunch()?'Guárdala ahora y el día del reto la abres desde tu pantalla de inicio. 🤍':'Después de instalarla, ábrela desde tu pantalla de inicio y continúa ahí. 🤍'}</p>
    <div class="wawrap light">
      <div class="wakick">Y un último paso</div>
      ${waCard(false)}
    </div>
    <div class="btn-row mt center" style="justify-content:center;flex-direction:column;align-items:center;gap:10px">
-     <button class="btn btn-primary" data-instok>${DATA.started?'Volver al inicio →':'Ya la instalé, continuar →'}</button>
-     ${DATA.started?'':'<button class="btn-link" data-instskip>Continuar sin instalar</button>'}
+     <button class="btn btn-primary" data-instok>${preLaunch()?'Listo, ya la guardé':(DATA.started?'Volver al inicio →':'Ya la instalé, continuar →')}</button>
+     ${(preLaunch()||DATA.started)?'':'<button class="btn-link" data-instskip>Continuar sin instalar</button>'}
    </div>
   </section>`;
  },
  espera(){
   const c=fmtCountdown();
-  const fecha=LAUNCH?LAUNCH.toLocaleDateString("es-ES",{day:"numeric",month:"long"}):"";
-  return `<section class="cover view">
+
+  return `<section class="cover view esp">
     <div class="kicker">Muy pronto</div>
-    <h1>Me<em>Cumplo</em></h1>
+    <h1>Me <em>Cumplo</em></h1>
     <div class="seal-mark">${sealSVG()}</div>
-    <p class="sub">Iniciamos el ${fecha}.</p>
+    <div class="fechas">
+      <div class="fila"><span class="fdia">Domingo 2</span><span class="ftxt">se abre tu espacio</span></div>
+      <div class="fila on"><span class="fdia">Lunes 3</span><span class="ftxt">empieza tu día 1</span></div>
+    </div>
+    <div class="cdlbl">Tu espacio se abre en</div>
     <div id="cd" class="countdown">
       <div><b data-cd="d">${c.days}</b><span>días</span></div>
       <div><b data-cd="h">${String(c.hrs).padStart(2,'0')}</b><span>horas</span></div>
       <div><b data-cd="m">${String(c.mins).padStart(2,'0')}</b><span>min</span></div>
       <div><b data-cd="s">${String(c.secs).padStart(2,'0')}</b><span>seg</span></div>
     </div>
-    <p class="espera-note">Prepárate para volver a confiar en ti. 🤍</p>
     <div class="wawrap">
       <div class="wakick">Mientras tanto</div>
       ${waCard(true)}
+      <a class="wacard" style="background:linear-gradient(160deg,#7A3549,#4A1D2E);border:1px solid rgba(231,196,140,.55);box-shadow:0 10px 28px rgba(0,0,0,.25);margin-top:12px" data-go="instalar">
+        <span class="waic" style="background:#E7C48C">
+          <span class="wasvg" style="fill:#4A1D2E"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4" fill="none" stroke="#4A1D2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" fill="none" stroke="#4A1D2E" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </span>
+        <span class="watxt">
+          <b style="color:#E7C48C">Guárdala como app</b>
+          <span style="color:#F6ECD9">Para abrirla con un toque desde tu celular</span>
+        </span>
+        <span class="waarrow" style="color:#E7C48C">→</span>
+      </a>
     </div>
-    <div class="espera-access">
-      <input type="password" id="previewKey" placeholder="clave (solo Meiby)" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+    ${showKey ? `<div class="espera-access">
+      <input type="password" id="previewKey" placeholder="clave" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
       <button class="espera-preview" data-previewgo>entrar</button>
-    </div>
+    </div>` : `<button class="keydot" data-keytoggle aria-label="Acceso"><i></i></button>`}
   </section>`;
  },
  cover(){
@@ -880,7 +930,7 @@ const VIEWS={
    </div>`:''}
 
    <h2 class="section" style="margin-top:34px">Tus 21 días</h2>
-   <p class="lead">Toca un día para escribir tu reflexión. Cada círculo lleno es una promesa cumplida.</p>
+   <p class="lead">${preStart()?'Tu día 1 se abre el '+START_TXT+'. Mientras tanto, llena tus páginas de arriba. 🤍':'Toca un día para escribir tu reflexión. Cada círculo lleno es una promesa cumplida.'}</p>
    <div class="grid-days">${cells}</div>
 
    <h2 class="section" style="margin-top:34px">Mis hábitos</h2>
@@ -1285,10 +1335,14 @@ function flash(msg){const t=document.getElementById("savedTag");t.textContent=ms
 /* ---------- router ---------- */
 function go(route){
  const [name,arg]=route.split(":");
- if(name==="dia"){const dn=parseInt(arg,10);if(isLocked(dn)){flash("Cumple el día "+(dn-1)+" para desbloquear el día "+dn+" 🔒");return;}if(!DATA.onboarded){DATA.onboarded=true;scheduleSave();}}
+ if(name==="dia"){const dn=parseInt(arg,10);
+   if(preStart()){flash("Tu día 1 se abre el "+START_TXT+" 🤍");return;}
+   if(isLocked(dn)){flash("Cumple el día "+(dn-1)+" para desbloquear el día "+dn+" 🔒");return;}
+   if(!DATA.onboarded){DATA.onboarded=true;scheduleSave();}}
  if(name==="bienvenida"){if(!get("seen.bienvenida")){set("seen.bienvenida",true);}}
  if(name==="admin"){ADMIN.sel=null;}
  if(name==="fondos"){fondoSel=null;}
+ if(name==="espera"){showKey=false;}
  current=route;
  window.scrollTo({top:0,behavior:"auto"});
  const hdr=document.getElementById("hdr");
@@ -1389,6 +1443,11 @@ app.addEventListener("click",e=>{
  if(fo){fondoSel=+fo.dataset.fondo;window.scrollTo(0,0);rerender();return;}
  if(e.target.closest("[data-fondoback]")){fondoSel=null;window.scrollTo(0,0);rerender();return;}
  if(e.target.closest("[data-fotoclear]")){fondoPhoto=null;rerender();return;}
+ if(e.target.closest("[data-keytoggle]")){
+   showKey=true;rerender();
+   setTimeout(()=>{const i=document.getElementById("previewKey");if(i)i.focus();},60);
+   return;
+ }
  if(e.target.closest("[data-previewgo]")){
    const k=(document.getElementById("previewKey")?.value||"").trim().replace(/\s/g,"").toLowerCase();
    if(k===PREVIEW_KEY.toLowerCase()){bypassLaunch=true;go(DATA.started?"inicio":((!get("seen.instalada")&&!esApp())?"instalar":"cover"));}
@@ -1396,7 +1455,8 @@ app.addEventListener("click",e=>{
    return;
  }
  if(e.target.closest("[data-instok]")||e.target.closest("[data-instskip]")){
-   set("seen.instalada",true);go(DATA.started?"inicio":"cover");return;
+   set("seen.instalada",true);
+   go(preLaunch()?"espera":(DATA.started?"inicio":"cover"));return;
  }
  if(e.target.closest("[data-resetgo]")){
    DATA=fresh();fondoSel=null;fondoPhoto=null;ADMIN={auth:false,secret:"",rows:[],sel:null,err:"",q:""};
